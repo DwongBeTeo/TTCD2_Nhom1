@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${pageTitle}">Thêm/Chỉnh sửa Tài khoản</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2 th:text="${pageTitle}"></h2>
+        <form
+        	th:action="@{${account.accountId != null} ? '/valorant-accounts/edit/' + ${account.accountId} : '/valorant-accounts/add'}"  
+              th:object="${account}" method="post">
+            <div class="mb-3">
+                <label for="competitive" class="form-label">Competitive</label>
+                <input type="text" class="form-control" id="competitive" th:field="*{competitive}">
+            </div>
+            <div class="mb-3">
+                <label for="numberOfAgents" class="form-label">Số lượng Agents</label>
+                <input type="number" class="form-control" id="numberOfAgents" th:field="*{numberOfAgents}">
+            </div>
+            <div class="mb-3">
+                <label for="numberOfWeaponSkins" class="form-label">Số lượng Weapon Skins</label>
+                <input type="number" class="form-control" id="numberOfWeaponSkins" th:field="*{numberOfWeaponSkins}">
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Giá</label>
+                <input type="number" step="0.01" class="form-control" id="price" th:field="*{price}">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Mô tả</label>
+                <textarea class="form-control" id="description" th:field="*{description}"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="status" class="form-label">Trạng thái</label>
+                <select class="form-select" id="status" th:field="*{status}">
+                    <option value="available">Available</option>
+                    <option value="sold">Sold</option>
+                    <option value="pending">Pending</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <a th:href="@{/valorant-accounts}" class="btn btn-secondary">Hủy</a>
+        </form>
+    </div>
+</body>
+</html>
