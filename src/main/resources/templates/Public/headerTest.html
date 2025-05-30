@@ -1,0 +1,391 @@
+<header id="heading" th:fragment="headerTest" 
+    xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <nav class="heading">
+<div class="container c-container header-container">
+    <div class="box-logo">
+        <a th:href="@{#}">
+                            <img th:src="@{test/images/Logo-shoprito.png}" alt="logo-shop" class="d-lg-block d-none">
+                                        <img th:src="@{test/images/Logo-shoprito.png}" alt="logo-shop-mob" class="d-lg-none">
+                    </a>
+    </div>
+            <div class="d-none d-lg-flex h-100">
+            
+                        <div class="box-viewed d-flex c-py-10">
+                <div class="box-icon brs-8 c-mr-8">
+                    <img th:src="@{test/images/viewed.png}" alt="viewed" style="filter: invert(80%)">
+                </div>
+                <a th:href="@{/viewed}" class="lh-40 box-icon-text fw-700">Đã xem</a>
+            </div>
+                    </div>
+        <div class="box-search d-none d-lg-block">
+            <form class="form-search" id="formSearchHeader">
+                <input type="search" placeholder="Tìm kiếm" class="has-submit" id="search-header-input">
+                <button type="submit" id="btnSearch" title="Tìm kiếm"></button>
+                <div class="tooltip-search-hearder" id="input-search-header">
+                </div>
+            </form>
+        </div>
+        <div class="d-flex">
+           <a class="btn primary handle-recharge-modal pl-xl-4 pr-xl-4 pl-sm-1 pr-sm-1 c-ml-16  c-mr-16 d-none d-lg-block" href="@javascript:void(0)" data-tab="1">Nạp tiền</a>
+                
+                    <div class="d-lg-none">
+                <div class="box-notify-1 ">
+                    <div class="box-icon brs-8 ">
+                        <a th:href="@{/viewed}">
+                            <img th:src="@{test/images/DA-XEM.png}" alt="DA-XEM" style="position: absolute;top: 20px;right: 60px;width:30px; height: 30px">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-notify  d-flex ">
+    <div class="box-icon brs-8 " data-notity="">
+        <img width="25" height="25" th:src="@{test/images/thongbao.png}" alt="ring">
+        <img class="d-none d-lg-block" width="25" height="25" th:src="@{test/images/ring.svg}" alt="ring">
+        <p id="num-notification" class="d-none">
+            0
+        </p>
+    </div>
+    <div class="notify_menu notify_active position-absolute brs-12">
+        <div class="notify_header d-flex justify-content-between c-p-16">
+            <div class="fw-700 fz-20 lh-28 title-color-dark">Thông báo</div>
+            <img th:src="@{test/images/profile_close.svg}" alt="profile_close" class="close-notification-popup c-mr-12">
+        </div>
+        <div class="notification_type c-ml-14 c-mr-14 c-mt-8 c-pb-4">
+                            <a class="tag c-ml-4 d-inline-flex" data-id="1" href="@javascript:void(0)">
+                    Hệ thống/Event
+                    <div class=" num-notification-inner num-notification-inner_1 c-ml-4">
+                    </div>
+                </a>
+                            <a class="tag c-ml-4 d-inline-flex" data-id="2" href="@javascript:void(0)">
+                    Giao dịch
+                    <div class=" num-notification-inner num-notification-inner_2 c-ml-4">
+                    </div>
+                </a>
+                    </div>
+        <div class="notify_content_layout">
+            <div id="result-notification" class="notify_content c-pr-4 c-mr-4 c-pl-16 c-mt-8 c-mb-12">
+                <div class="notification-menu-in-content text-center c-my-16">
+                    <img th:src="@{test/images/notification_mailbox.png}" alt="">
+                    <p class="fw-500 c-mt-12">Bạn chưa có thông báo nào</p>
+                </div>
+            </div>
+        </div>
+        <div class="notify_menu_seeMore c-px-12 c-pb-12 c-pt-4 text-center cursor-pointer" data-type="">
+            <span class="text-color fw-500">Xem thêm</span>
+            <img th:src="@{test/images/notification_down.png}" alt="notification_down">
+        </div>
+    </div>
+</div>
+
+<div class="d-flex ml-0 ml-lg-3">
+    <div class="box-icon brs-8 cart-view-header">
+        <img class="position-relative" th:src="@{test/images/giohang.png}" alt="cart" style="width: 25px;">
+        <img class="d-none d-lg-block" th:src="@{test/images/cart.svg}" alt="cart" style="width: 25px;">
+        <p id="num_cart" class="">0</p>
+        <link rel="stylesheet" th:href="@{test/css/header.css}">
+        <div class="view-menu-cart pt-3 pl-3 pr-3 pb-0">
+            <h6 class="mb-2 text-center">Giỏ hàng</h6>
+            <div class="cart-header-main">
+                <p class="m-0 h6" id="title-nick"></p>
+                <ul class="list-group list-group-flush" id="cart-header-nick">
+                    <li>
+                        <p class="text-center fz-20">Giỏ hàng trống !!!</p>
+                    </li>
+                    <li>
+                        <div class="d-flex justify-content-center">
+                            <img class="w-75 img-null-cart" th:src="@{test/images/empty-cart.png}" alt="Giỏ hàng trống">
+                        </div>
+                    </li>
+                </ul>
+                <p class="m-0 h6" id="title-service"></p>
+                <ul class="list-group list-group-flush" id="cart-header-service">
+                </ul>
+            </div>
+            <div class="row justify-content-end mb-3 mt-3">
+                <a class="btn primary c-px-xl-20 c-px-34 c-mr-16" th:href="@{/cart}" data-tab="1">Xem giỏ hàng</a>
+            </div>
+        </div>
+        <script th:src="@{test/js/header.js}"></script>
+    </div>
+</div>
+
+			<!-- User -->
+            <div class="box-account c-ml-16 d-none d-md-block position-relative" >
+
+
+				
+					<!-- Hiển thị tên người dùng nếu đã đăng nhập -->
+					<div sec:authorize="isAuthenticated()">
+			            <span class="navbar-text" style="color: white;">Chào, <span style="color: white;" sec:authentication="name"></span>!</span>
+			            <form th:action="@{/logout}" method="post" style="display:inline;">
+			                <button type="submit" style="color: blue;">Đăng xuất</button>
+			            </form>
+			        </div>
+					    
+					<div class="account-logined btn-modal-login" sec:authorize="isAnonymous()">
+					    <div class="box-icon brs-8 ">
+					        <img th:src="@{test/images/profile.svg}" alt="profile">
+					    </div>
+					</div>
+				
+
+                <!-- <div class="box-account-logined position-absolute brs-12">
+                    <div class="box-account-title d-flex justify-content-between c-mb-18">
+                        <div class="fw-700 fz-20 lh-28">Tài khoản</div>
+                        <img th:src="@{test/images/profile_close.svg}" alt="profile_close" class="close-login-popup c-mr-12">
+                    </div>
+                    <div class="c-pr-16 account-logined-content box-account_nologined">
+                        <div class="login-popup brs-12 c-p-16 d-flex m-auto justify-content-between">
+                            <div class="m-auto ">
+                                <img th:src="@{test/images/login-robot.png}" alt="login-robot">
+                            </div>
+
+                            <div class="login-popup_content c-ml-24">
+                                <div class="text-secondary-color fw-700 lh-28 fz-20">
+                                    Nick.vn xin chào!
+                                </div>
+                                <div class="fw-400 c-mt-4">Vui lòng đăng nhập để sử dụng dịch vụ của chúng tôi</div>
+                                <button class="btn primary w-100 c-mt-12" onclick="openLoginModal()">Đăng nhập</button>
+                                <div class="c-mt-10">Bạn chưa có tài khoản? 
+                                <a th:href="@{#}" onclick="openRegisterModal()" class="text-primary-color fw-500 underline" style="text-decoration: underline">Đăng ký</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<div class="account-logined-content c-pr-4 box-account_logined">
+    <div class="sidebar">
+	    <div class="sidebar-section d-flex brs-12 c-mb-16 sidebar-user-profile">
+	    </div>
+            Nhóm vào với các item vào với nhau theo parent
+                                            Tìm parent trước
+                                    <div class="sidebar-section brs-12 c-mb-16">
+                                                                                                                                            <div class="sidebar-item ">
+                                    <a th:href="@{/thong-tin}" class="d-block align-items-center d-flex">
+                                        <div class="icon-sidebar" style="--path:url(images/ttin%20tai%20khoan.png)">
+                                        </div>
+                                        <p class="sidebar-item-text fw-400 fz-12 mb-0">Thông tin tài khoản</p>
+                                        <img th:src="@{test/images/sidebar_arrow_right.svg}" alt="sidebar_arrow_right">
+                                    </a>
+                                </div>
+                                                                    <div class="sidebar-item-partition d-flex c-my-8"></div>
+                                                                                                                            <div class="sidebar-item ">
+                                    <a th:href="@{/changepassword}" class="d-block align-items-center d-flex">
+                                        <div class="icon-sidebar" style="--path:url(images/doi%20mk.png)">
+                                        </div>
+                                        <p class="sidebar-item-text fw-400 fz-12 mb-0">Đổi mật khẩu</p>
+                                        <img th:src="@{test/images/sidebar_arrow_right.svg}" alt="sidebar_arrow_right">
+                                    </a>
+                                </div>
+                                                                    <div class="sidebar-item-partition d-flex c-my-8"></div>
+                                                                                                                            <div class="sidebar-item ">
+                                    <a th:href="@{/affiliate-convert-commissions}" class="d-block align-items-center d-flex">
+                                        <div class="icon-sidebar" style="--path:url(images/rito.png)">
+                                        </div>
+                                        <p class="sidebar-item-text fw-400 fz-12 mb-0">Quy đổi Rito Coin</p>
+                                        <img th:src="@{test/images/sidebar_arrow_right.svg}" alt="sidebar_arrow_right">
+                                    </a>
+                                </div>
+                                                                                                        </div>
+                                            Tìm parent trước
+                                    <div class="sidebar-section brs-12 c-mb-16">
+                        <p class="sidebar-section-title c-mb-16 fz-15 fw-500 profile-color">Quản lý giao dịch</p>
+                        <div class="d-flex justify-content-between transaction-manager">
+                                                                                                                                    <div class="sidebar-item sidebar-item-col ">
+                                        <a th:href="@{/nap-the}" class=" d-flex flex-column align-items-center">
+                                            <div class="icon-sidebar" style="--path:url(images/nap%20tien.png)">
+                                            </div>
+                                            <div class="sidebar-transaction-item-text fw-400 fz-12 mb-0">
+                                                Nạp tiền</div>
+                                        </a>
+                                    </div>
+                                                                                                        <div class="sidebar-item sidebar-item-col ">
+                                        <a th:href="@{/withdrawitem-2}" class=" d-flex flex-column align-items-center">
+                                            <div class="icon-sidebar" style="--path:url(images/rut%20vat%20pham.png)">
+                                            </div>
+                                            <div class="sidebar-transaction-item-text fw-400 fz-12 mb-0">
+                                                Rút vật phẩm</div>
+                                        </a>
+                                    </div>
+                                                                                    </div>
+                    </div>
+                                            Tìm parent trước
+                               <div class="sidebar-section brs-12 c-mb-16">
+                                 <p class="sidebar-section-title fz-15 fw-500 c-mb-16 text-c profile-color">LỊCH SỬ GIAO DỊCH</p>
+								<div class="sidebar-item ">
+                                    <a th:href="@{/auction-log}" class="d-block align-items-center d-flex">
+                                        <div class="icon-sidebar" style="--path:url(images/quy%20doi%20rito%20coin.png)">
+                                        </div>
+                                        <p class="sidebar-item-text fw-400 fz-12 mb-0">Lịch sử đấu giá</p>
+                                        <img th:src="@{test/images/sidebar_arrow_right.svg}" alt="sidebar_arrow_right">
+                                    </a>
+                                </div>
+                                                                    <div class="sidebar-item-partition d-flex c-my-8"></div>
+								<div class="sidebar-item ">
+                                    <a th:href="@{/lich-su-giao-dich}" class="d-block align-items-center d-flex">
+                                        <div class="icon-sidebar" style="--path:url(images/bien%20dong%20so%20du.png)">
+                                        </div>
+                                        <p class="sidebar-item-text fw-400 fz-12 mb-0">Biến động số dư</p>
+                                        <img th:src="@{test/images/sidebar_arrow_right.svg}" alt="sidebar_arrow_right">
+                                    </a>
+                                </div>
+                                                                    <div class="sidebar-item-partition d-flex c-my-8"></div>
+                                                                                                                            <div class="sidebar-item ">
+                                    <a th:href="@{/lich-su-mua-account}" class="d-block align-items-center d-flex">
+                                        <div class="icon-sidebar" style="--path:url(images/tk%20hien%20co.png)">
+                                        </div>
+                                        <p class="sidebar-item-text fw-400 fz-12 mb-0">Tài khoản đã mua</p>
+                                        <img th:src="@{test/images/sidebar_arrow_right.svg}" alt="sidebar_arrow_right">
+                                    </a>
+                                </div>
+                                                                    <div class="sidebar-item-partition d-flex c-my-8"></div>
+                                                                                                                            <div class="sidebar-item ">
+                                    <a th:href="@{/installment-order-list}" class="d-block align-items-center d-flex">
+                                        <div class="icon-sidebar" style="--path:url(images/lich%20su%20tra%20gop.png)">
+                                        </div>
+                                        <p class="sidebar-item-text fw-400 fz-12 mb-0">Lịch sử trả góp</p>
+                                        <img th:src="@{test/images/sidebar_arrow_right.svg}" alt="sidebar_arrow_right">
+                                    </a>
+                                </div>
+                                                                    <div class="sidebar-item-partition d-flex c-my-8"></div>
+                                                                                                                            <div class="sidebar-item ">
+                                    <a th:href="@{/deposit-order-list}" class="d-block align-items-center d-flex">
+                                        <div class="icon-sidebar" style="--path:url(images/lich%20su%20dat%20coc.png)">
+                                        </div>
+                                        <p class="sidebar-item-text fw-400 fz-12 mb-0">Lịch sử đặt cọc</p>
+                                        <img th:src="@{test/images/sidebar_arrow_right.svg}" alt="sidebar_arrow_right">
+                                    </a>
+                                </div>
+                                                                    <div class="sidebar-item-partition d-flex c-my-8"></div>
+                                                                                                                            <div class="sidebar-item ">
+                                    <a th:href="@{/the-cao-da-mua}" class="d-block align-items-center d-flex">
+                                        <div class="icon-sidebar" style="--path:url(images/the%20cao%20da%20mua.png)">
+                                        </div>
+                                        <p class="sidebar-item-text fw-400 fz-12 mb-0">Thẻ cào đã mua</p>
+                                        <img th:src="@{test/images/sidebar_arrow_right.svg}" alt="sidebar_arrow_right">
+                                    </a>
+                                </div>
+                                                                    <div class="sidebar-item-partition d-flex c-my-8"></div>
+                                                                                                                            <div class="sidebar-item ">
+                                    <a th:href="@{/dich-vu-da-mua}" class="d-block align-items-center d-flex">
+                                        <div class="icon-sidebar" style="--path:url(images/dich%20vu%20da%20mua.png)">
+                                        </div>
+                                        <p class="sidebar-item-text fw-400 fz-12 mb-0">Dịch vụ đã mua</p>
+                                        <img th:src="@{test/images/sidebar_arrow_right.svg}" alt="sidebar_arrow_right">
+                                    </a>
+                                </div>
+                                                                    <div class="sidebar-item-partition d-flex c-my-8"></div>
+                                                                                                                            <div class="sidebar-item ">
+                                    <a th:href="@{/minigame-log}" class="d-block align-items-center d-flex">
+                                        <div class="icon-sidebar" style="--path:url(images/lich%20su%20choi%20minigame.png)">
+                                        </div>
+                                        <p class="sidebar-item-text fw-400 fz-12 mb-0">Lịch sử chơi minigame</p>
+                                        <img th:src="@{test/images/sidebar_arrow_right.svg}" alt="sidebar_arrow_right">
+                                    </a>
+                                </div>
+                                                                    <div class="sidebar-item-partition d-flex c-my-8"></div>
+                                                                                                                            <div class="sidebar-item ">
+                                    <a th:href="@{/minigame-logacc}" class="d-block align-items-center d-flex">
+                                        <div class="icon-sidebar" style="--path:url(images/lich%20su%20trung%20acc%20minigame.png)">
+                                        </div>
+                                        <p class="sidebar-item-text fw-400 fz-12 mb-0">Lịch sử trúng acc minigame</p>
+                                        <img th:src="@{test/images/sidebar_arrow_right.svg}" alt="sidebar_arrow_right">
+                                    </a>
+                                </div>
+                                                                    <div class="sidebar-item-partition d-flex c-my-8"></div>
+                                                                                                                            <div class="sidebar-item ">
+                                    <a th:href="@{/lich-su-nap-the}" class="d-block align-items-center d-flex">
+                                        <div class="icon-sidebar" style="--path:url(images/lich%20su%20nap%20the.png)">
+                                        </div>
+                                        <p class="sidebar-item-text fw-400 fz-12 mb-0">Lịch sử nạp thẻ</p>
+                                        <img th:src="@{test/images/sidebar_arrow_right.svg}" alt="sidebar_arrow_right">
+                                    </a>
+                                </div>
+                                                                    <div class="sidebar-item-partition d-flex c-my-8"></div>
+                                                                                                                            <div class="sidebar-item ">
+                                    <a th:href="@{/lich-su-atm-tu-dong}" class="d-block align-items-center d-flex">
+                                        <div class="icon-sidebar" style="--path:url(images/lich%20su%20ap%20atm%20tu%20dong.png)">
+                                        </div>
+                                        <p class="sidebar-item-text fw-400 fz-12 mb-0">Lịch sử nạp ATM tự động</p>
+                                        <img th:src="@{test/images/sidebar_arrow_right.svg}" alt="sidebar_arrow_right">
+                                    </a>
+                                </div>
+                                                                                                        </div>
+                                            <div class="sidebar-section brs-12 c-mb-16">
+        <div class="sidebar-item log-out-button">
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+             -->
+            
+            </div>
+            </div>
+</div>
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </nav>
+    <div class="menu-list w-100 d-none d-lg-block" style="">
+        <div class="menu-category ">
+        <div class="container c-container">
+            <ul class="d-flex justify-content-between px-0">
+                              	<li class="w-100 c-px-4">
+                                    <a th:href="@{/tin-tuc/cau-hoi-thuong-gap-khi-mua-acc-valorant}">
+                                        <div class="c-p-8 brs-8 d-flex justify-content-center align-items-center " style="white-space: nowrap;">
+                                            <div>
+                                                                                                    <img th:src="@{test/images/cau-hoi-removebg-preview.png}" alt="Câu hỏi thường gặp" class="c-pr-4">
+                                                
+                                                                                            </div>
+                                            <span class="fw-500 fz-15 lh-24 ">Câu hỏi thường gặp</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="w-100 c-px-4">
+                                    <a th:href="@{/mua-acc}">
+                                        <div class="c-p-8 brs-8 d-flex justify-content-center align-items-center " style="white-space: nowrap;">
+                                            <div>
+                                                                                                    <img th:src="@{test/images/mua-acc-removebg-preview.png}" alt="Mua Acc" class="c-pr-4">
+                                                
+                                                                                            </div>
+                                            <span class="fw-500 fz-15 lh-24 ">Mua Acc</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            	<li class="w-100 c-px-4">
+                                    <a th:href="@{/dich-vu/nap-vp-valorant}">
+                                        <div class="c-p-8 brs-8 d-flex justify-content-center align-items-center " style="white-space: nowrap;">
+                                            <div>
+                                                                                                    <img th:src="@{test/images/nap-vp%281%29.png}" alt="Nạp VP" class="c-pr-4">
+                                                
+                                                                                            </div>
+                                            <span class="fw-500 fz-15 lh-24 ">Nạp VP</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                                                                                                                                                                                <li class="w-100 c-px-4">
+                                    <a th:href="@{/mua-the}">
+                                        <div class="c-p-8 brs-8 d-flex justify-content-center align-items-center " style="white-space: nowrap;">
+                                            <div>
+                                                                                                    <img th:src="@{test/images/mua-the-removebg-preview.png}" alt="Mua Thẻ" class="c-pr-4">
+                                                
+                                                                                            </div>
+                                            <span class="fw-500 fz-15 lh-24 ">Mua Thẻ</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                                                                                                                                                                                <li class="w-100 c-px-4">
+                                    <a th:href="@{/tin-tuc}">
+                                        <div class="c-p-8 brs-8 d-flex justify-content-center align-items-center " style="white-space: nowrap;">
+                                            <div>
+                                                                                                    <img th:src="@{test/images/tin-tuc-removebg-preview.png}" alt="Tin tức" class="c-pr-4">
+                                                
+                                                                                            </div>
+                                            <span class="fw-500 fz-15 lh-24 ">Tin tức</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                                                                                    </ul>
+        </div>
+    </div>
+    </div>
+</header>

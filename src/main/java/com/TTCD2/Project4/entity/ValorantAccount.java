@@ -1,6 +1,5 @@
 package com.TTCD2.Project4.entity;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -36,7 +35,7 @@ public class ValorantAccount {
     private Integer numberOfWeaponSkins;
 
     @Column(name = "price", nullable = false)
-    private BigDecimal price;
+    private Double price;
 
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
@@ -45,15 +44,36 @@ public class ValorantAccount {
     @Column(name = "status")
     private Status status = Status.available;
 
+	@Column(name = "inventory_quantity", nullable = false)
+    private Integer inventoryQuantity = 0;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
 
     public enum Status {
         available, sold, pending
     }
-
     
-    // Getters and Setters
+    public ValorantAccount() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ValorantAccount(Integer accountId, String competitive, Integer numberOfAgents, Integer numberOfWeaponSkins,
+			Double price, String description, Status status, Integer inventoryQuantity, LocalDateTime createdAt) {
+		super();
+		this.accountId = accountId;
+		this.competitive = competitive;
+		this.numberOfAgents = numberOfAgents;
+		this.numberOfWeaponSkins = numberOfWeaponSkins;
+		this.price = price;
+		this.description = description;
+		this.status = status;
+		this.inventoryQuantity = inventoryQuantity;
+		this.createdAt = createdAt;
+	}
+
+	// Getters and Setters
 	public Integer getAccountId() {
 		return accountId;
 	}
@@ -86,11 +106,11 @@ public class ValorantAccount {
 		this.numberOfWeaponSkins = numberOfWeaponSkins;
 	}
 
-	public BigDecimal getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -110,6 +130,14 @@ public class ValorantAccount {
 		this.status = status;
 	}
 
+	public Integer getInventoryQuantity() {
+		return inventoryQuantity;
+	}
+	
+	public void setInventoryQuantity(Integer inventoryQuantity) {
+		this.inventoryQuantity = inventoryQuantity;
+	}
+	
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}

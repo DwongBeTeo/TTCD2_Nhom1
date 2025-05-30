@@ -1,0 +1,312 @@
+.tk_watched{
+    display: none;
+}
+
+.card.--custom {
+    --primary-color: #F67600;
+    border-radius: 12px;
+    border: none;
+    font-family: 'Open Sans';
+    min-height: 1rem;
+}
+
+#withdrawitem .alert-dismissible{
+    margin-bottom: 0;
+}
+
+#withdrawitem .alert-dismissible .close{
+    top: 50%!important;
+    transform: translateY(-50%)!important;
+    line-height: 20px;
+}
+
+.card .card--header {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.card .card--header .card--header__title h4 {
+    margin: 0;
+    color: #1B1D29;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.p_recharge_amount{
+    cursor: pointer;
+}
+
+.c_max-header-tin-tuc{
+    height: 48px;
+}
+#history__service .menu-category-item{
+    background: #ffffff;
+}
+
+#history__service .menu-category-item:hover {
+    transition: .2s;
+    background-color: var(--disable-switch-color);
+}
+
+.card .card--header .card--header__title {
+    display: flex;
+    align-items: center;
+}
+
+.text_border{
+    color: var(--ghost-border-hover-color);
+}
+
+.card .card--header .card--header__tools {
+    position: absolute;
+    right: 0;
+}
+
+/*article slider */
+.article--slider .article .article--thumbnail {
+    height: 450px;
+    border-radius: 0;
+}
+
+.article--slider .article--thumbnail__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.article--slider .article--title {
+    color: #1B1D29;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.5;
+}
+
+.article--slider .article--description {
+    color: #434657;
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.article--slider {
+    overflow: hidden;
+}
+
+.pagination--layout > div {
+    height: 0;
+}
+
+.swiper-pagination.--custom {
+    position: relative;
+    text-align: center;
+    top: -40px;
+}
+
+.swiper-pagination.--custom .swiper-pagination-bullet {
+    background: #DBDBDB;
+    margin: 0 4px;
+    opacity: 1;
+    transition: all ease .3s;
+}
+
+.swiper-pagination.--custom .swiper-pagination-bullet-active {
+    width: 24px;
+    border-radius: 100px;
+    background: var(--primary-color);
+    transition: all ease .3s;
+}
+
+#minigame-category .top-today{
+    margin-bottom: 40px;
+    margin-top: 24px;
+}
+
+#account-category .top-today{
+    margin-bottom: 32px;
+    margin-top: 16px;
+}
+
+#minigame-category .c_flash-sale{
+    margin-bottom: 24px;
+}
+#minigame-category .for-you{
+    margin-bottom: 24px;
+}
+#minigame-category .free-fire{
+    margin-bottom: 24px;
+}
+#minigame-category .lien-quan{
+    margin-bottom: 32px;
+}
+
+#minigame-category .services-other{
+    margin-bottom: 40px;
+}
+
+#account-category .services-other{
+    margin-bottom: 40px;
+}
+
+#minigame-detail .play-recently{
+    margin-bottom: 40px;
+}
+#minigame-detail .lien-quan{
+    margin-bottom: 16px;
+}
+
+.media-mobile{
+    display: none;
+}
+
+#account-list .list-account{
+    margin-top: 16px;
+}
+
+#account-list .related-category{
+    margin-top: 0px;
+    margin-bottom: 16px;
+}
+
+#account-detail .same-price{
+    margin-bottom: 32px;
+}
+#account-detail .c_flash-sale{
+    margin-bottom: 32px;
+}
+
+#account-list .services-other{
+    margin-bottom: 40px;
+}
+#account-detail .data-account-detail{
+    margin-bottom: 32px;
+}
+#account-detail .watched{
+    margin-bottom: 24px;
+}
+
+.text-order{
+    color: var(--ghost-border-hover-color)!important;
+}
+
+#service-detail .related-service{
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+
+.history-detail-title, .g_history-detail-content {
+    background-color: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.c_thele{
+    cursor: pointer;
+}
+.c_text-pink{
+    color: #F473B9;
+}
+
+.formThanhToanNickRandom,
+.formThanhToanNickRandomHome{
+    display: none;
+}
+
+#account-list .history-content{
+    overflow-y: visible!important;
+}
+
+.history-detail-attr:last-child{
+    margin-bottom: 0!important;
+}
+
+.his_nick-detail-noti{
+    background: #F3F3F7;
+    border-radius: 8px;
+    padding: 16px 12px;
+}
+
+.text__main{
+    color: var(--text-color);
+}
+
+@media only screen and (max-width: 992px) {
+    .recharge-money-container{
+        border-top: 1px solid #E4E5F0!important;
+    }
+    .history-detail-title, .g_history-detail-content {
+        border: 1px solid #E4E5F0;
+    }
+
+    .c-history-right{
+        background: #ffffff;
+    }
+    .c_history-right{
+        padding: 16px;
+    }
+    .m_content-tra-gop{
+        border: 1px solid var(--border-default-color);
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    .g_mobile-content{
+        border: 1px solid var(--border-default-color);
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    #account-detail .card--attr:last-child{
+        margin-bottom: 0!important;
+    }
+    #account-detail .same-price{
+        margin-bottom: 24px;
+    }
+    #account-detail .c_flash-sale{
+        margin-bottom: 24px;
+    }
+    #account-detail .section-content{
+        margin-bottom: 24px!important;
+    }
+    #account-detail .data-account-detail{
+        margin-bottom: 24px!important;
+    }
+    #account-list .related-category{
+        margin-top: 24px;
+    }
+    #account-list .list-account{
+        margin-top: 32px;
+    }
+    #minigame-category .top-today{
+        margin-bottom: 20px;
+        margin-top: 28px;
+    }
+
+    #minigame-category .c_flash-sale{
+        margin-bottom: 16px;
+    }
+    #minigame-category .for-you{
+        margin-bottom: 20px;
+    }
+    #minigame-category .free-fire{
+        margin-bottom: 16px;
+    }
+    #minigame-category .lien-quan{
+        margin-bottom: 16px;
+    }
+    .media-web{
+        display: none!important;
+    }
+    #minigame-detail .play-recently{
+        margin-bottom: 16px;
+    }
+
+    #minigame-detail .lien-quan{
+        margin-bottom: 24px;
+
+    }
+    .media-mobile{
+        display: block!important;
+    }
+
+    #account-category .top-today{
+        margin-bottom: 16px;
+        margin-top: 28px;
+    }
+}

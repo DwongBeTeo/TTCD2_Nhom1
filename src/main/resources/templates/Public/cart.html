@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{Public/headTest :: headTest}"/>
+
+<body>
+<!--Header chung cho SHopGame  -->
+	<header th:replace="~{Public/headerTest :: headerTest}"></header>
+<!-- EndHeader -->
+    <h1>Giỏ hàng của bạn</h1>
+    <div th:if="${cartItems != null && !cartItems.isEmpty()}">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Game</th>
+                    <th>ID Tài khoản</th>
+                    <th>Mô tả</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng (Item)</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${cartItems}">
+                    <td th:text="${item.gameName}"></td>
+                    <td th:text="${item.accountId}"></td>
+                    <td th:text="${item.description != null} ? ${item.description} : 'Chưa có'"></td>
+                    <td th:text="${item.price != null} ? ${item.price} + ' VNĐ' : 'Chưa có'"></td>
+                    <td th:text="${item.quantity}"></td>
+                    <td th:text="${item.price != null} ? (${item.price} * ${item.quantity}) + ' VNĐ' : '0 VNĐ'"></td>
+                    <td>
+                        <!-- Nút xóa với data-cart-id -->
+                        <button class="btn btn-danger remove-cart-item" th:data-cart-id="${item.cartId}" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')">Xóa</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="total-price">
+            <h3>Tổng tiền: <span id="totalPrice" th:text="${totalPrice != null} ? ${#numbers.formatDecimal(totalPrice, 1, 2)} + ' VNĐ' : '0 VNĐ'"></span></h3>
+        </div>
+        <a th:href="@{/checkout}" class="btn btn-primary">Thanh toán</a>
+    </div>
+    <div th:if="${cartItems == null || cartItems.isEmpty()}">
+        <p>Giỏ hàng của bạn đang trống.</p>
+        <a th:href="@{/listValorantAccount}" class="btn btn-primary">Tiếp tục mua sắm</a>
+    </div>
+    
+    
+    <script>
+        let sitekey;
+    </script>
+    <!-- Js Login Modal -->
+	<div th:replace="~{Public/loginModal :: login}"></div>
+	<!-- End Login Modal -->
+    <script>
+        // JavaScript để xử lý xóa sản phẩm
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.remove-cart-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const cartId = this.getAttribute('data-cart-id');
+                    fetch(`/cart/remove/${cartId}`, {
+                        method: 'POST'
+                    })
+                    .then(response => response.text())
+                    .then(result => {
+                        if (result === 'success') {
+                            // Xóa dòng khỏi bảng
+                            this.closest('tr').remove();
+                            // Cập nhật tổng tiền và số lượng (gọi lại loadDataCart từ header.js)
+                            loadDataCart();
+                        } else {
+                            alert('Không thể xóa sản phẩm!');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                });
+            });
+        });
+        
+        function updateCartDetails() {
+            console.log('Updating cart details...'); // Debug
+            fetch('/cart/items')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Cart data:', data); // Debug dữ liệu trả về
+                    // Cập nhật tổng tiền
+                    const totalPriceElement = document.getElementById('totalPrice');
+                    if (totalPriceElement) {
+                        totalPriceElement.textContent = data.totalPrice != null ? 
+                            new Intl.NumberFormat('vi-VN', { minimumFractionDigits: 2 }).format(data.totalPrice) + ' VNĐ' : '0 VNĐ';
+                    } else {
+                        console.error('totalPrice element not found'); // Debug
+                    }
+
+                    // Cập nhật giao diện nếu giỏ hàng trống
+                    const cartContent = document.getElementById('cartContent');
+                    const emptyCart = document.getElementById('emptyCart');
+                    if (!data.cartItems || data.cartItems.length === 0) {
+                        if (cartContent) {
+                            cartContent.style.display = 'none';
+                        }
+                        if (emptyCart) {
+                            emptyCart.style.display = 'block';
+                        }
+                    } else {
+                        if (cartContent) {
+                            cartContent.style.display = 'block';
+                        }
+                        if (emptyCart) {
+                            emptyCart.style.display = 'none';
+                        }
+                    }
+
+                    // Cập nhật số lượng trên header
+                    loadDataCart();
+                })
+                .catch(error => {
+                    console.error('Error updating cart details:', error);
+                    alert('Đã xảy ra lỗi khi cập nhật giỏ hàng!');
+                });
+        }
+    </script>
+    
+    
+    
+<footer th:replace="~{Public/footerTest :: footerTest}"></footer>
+   
+	
+<!-- Javascript -->
+	<div th:replace="~{Public/scripts :: scripts}"></div>
+</body>
+</html>

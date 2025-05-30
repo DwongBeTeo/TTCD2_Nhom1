@@ -1,0 +1,619 @@
+<!-- <!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách tài khoản</title>
+    <link rel="stylesheet" th:href="@{homePage//css/style.css}">
+</head>
+<body>
+    <h2>Chọn game để xem tài khoản</h2>
+    <div class="game-list">
+        <div class="game-card">
+            <h3>Liên Quân</h3>
+            <p>Xem tất cả tài khoản Liên Quân</p>
+            <a th:href="@{/lienquan}" class="view-button">Xem tài khoản</a>
+        </div>
+        <div class="game-card">
+            <h3>Valorant</h3>
+            <p>Xem tất cả tài khoản Valorant</p>
+            <a th:href="@{/test}" class="view-button">Xem tài khoản</a>
+        </div>
+        <div class="game-card">
+            <h3>PUBG</h3>
+            <p>Xem tất cả tài khoản PUBG</p>
+            <a th:href="@{/pubg}" class="view-button">Xem tài khoản</a>
+        </div>
+    </div>
+    <p><a th:href="@{/login}">Đăng nhập</a> | <a th:href="@{/register}">Đăng ký</a></p>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title> Shop Rito Version1</title>
+        <meta property="og:title" content="Shop Rito - Hệ Sinh Thái Game Riot Uy Tín Số 1 Việt Nam">
+        <meta name="description" content="Shop Rito chuyên cung cấp các loại tài khoản game Rito như: Valorant, TFT ( ĐTCL), LOL ( Liên Minh ), Tốc Chiến uy tín, giá rẻ với 10.000 giao dịch thành công mỗi ngày. Shop được bảo trợ uy tín bởi nhiều idols game, báo trí, phòng net cùng nhiều đối tác khác. Truy cập ngay để nhận ưu đãi.">
+        <meta property="og:description" content="Shop Rito chuyên cung cấp các loại tài khoản game Rito như: Valorant, TFT ( ĐTCL), LOL ( Liên Minh ), Tốc Chiến uy tín, giá rẻ với 10.000 giao dịch thành công mỗi ngày. Shop được bảo trợ uy tín bởi nhiều idols game, báo trí, phòng net cùng nhiều đối tác khác. Truy cập ngay để nhận ưu đãi.">
+    
+            <meta property="og:image" content="images/Banner%20Shoprito.jpg">
+        <meta name="keywords" content="">
+    <link rel="shortcut icon" th:href="@{homePage/images/Logo-favicon-rito.png}" type="image/x-icon">
+    <meta property="og:url" content="https://shoprito.com">
+
+            <link rel="canonical" th:href="@{homePage/https://shoprito.com}">
+        
+
+    
+                <meta name="robots" content="index,follow">
+        <meta name="csrf-token" content="WKbfcg8bWRJvo5uTD5aLPchnsAXWkN4Besrx3BJG">
+    <meta name="path" content="">
+    <meta property="og:type" content="website">
+    <meta name="jwt" content="">
+            <meta name="google-site-verification" content="WyhY9z2-sZF5_9EynuPZ2C8V65hQ2W7x1k2J-IDYv-8">
+        <link rel="stylesheet" th:href="@{homePage/css/all.min_1.css}">
+    
+    <link rel="stylesheet" th:href="@{homePage/css/swiper.min.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/sw2.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/bootstrap-datetimepicker.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/jquery.fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/fancybox.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/toastr.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/jquery-steps.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/select-nice.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/select3.css}">
+    
+    <link rel="stylesheet" th:href="@{homePage/css/toctoc.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/cashback.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/order.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/login_modal.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/modal-custom.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/dichvunoibat.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/cell.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/style_2.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/normalize.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/main.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/style-custom.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/style_1.css}">
+    <link rel="preload" th:href="@{homePage/css/instruct.css}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" th:href="@{homePage/css/flash_sale.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/notification.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/style.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/header.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/article.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/menu-category.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/menu-bottom.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/nick-detail.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/slide-banner.css}">
+    <link rel="preload" as="style" th:href="@{homePage/css/change-password.css}" fetchpriority="low" onload="this.rel='stylesheet'">
+    <link rel="preload" as="style" th:href="@{homePage/css/rSlider.min.css}" fetchpriority="low" onload="this.rel='stylesheet'">
+    <link rel="preload" as="style" th:href="@{homePage/css/service-mobile.css}" fetchpriority="low" onload="this.rel='stylesheet'">
+    <link rel="stylesheet" th:href="@{homePage/css/component-style.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/components.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/lock_money.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/home.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/plugin_fb.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/deposit.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/flashsale.css}">
+    <link rel="stylesheet" th:href="@{homePage/css/all.min.css}" crossorigin="anonymous" referrerpolicy="no-referrer">
+        <link rel="stylesheet" th:href="@{homePage/css/careers.css}">
+
+    
+    <script th:src="@{homePage/js/swiper.min.js}"></script>
+    <script th:src="@{homePage/js/wNumb.min.js}"></script>
+    <script th:src="@{homePage/js/jquery.min.js}"></script>
+    
+    <script th:src="@{homePage/js/js.cookie.min.js}"></script>
+    <script th:src="@{homePage/js/login_modal.js}"></script>
+    <script th:src="@{homePage/js/main_1.js}"></script>
+    <script th:src="@{homePage/js/outstanding.js}"></script>
+    <script th:src="@{homePage/js/search.js}"></script>
+    <script th:src="@{homePage/js/api.js}"></script>
+    <script th:src="@{homePage/js/api_1.js}" async="" defer=""></script>
+    <script th:src="@{homePage/js/buyaccrandomhome.js}"></script>
+    <script th:src="@{homePage/js/charge.js}"></script>
+    <!-- js chứa các hàm cần load trước tiên -->
+    <script th:src="@{homePage/js/preload.js}"></script>
+    <script th:src="@{homePage/js/captcha.js}"></script>
+    <script th:src="@{homePage/js/53d9d7f700497592af73dc72d770e366.min.js}" crossorigin="anonymous"></script>
+    
+        <link rel="stylesheet" th:href="@{homePage/css/top_charge.css}">
+
+    
+            <style>
+            @media (max-width: 992px) {
+                #footer {
+                    display: block !important;
+                    
+                }
+            }
+        </style>
+    
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js}'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js}?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WCC2C34S');
+    </script>
+    <!-- End Google Tag Manager -->
+    
+    <style>
+    .main-lay-out {
+        background-attachment: fixed;
+        background-size: 100%;
+        padding-bottom: 40px;
+    }
+
+            .main-lay-out {
+            background: #0A1428 url(images/background.png) no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+
+    <style>
+        :root {
+            --bg-layout: #0A1428;
+        }
+    </style>
+    <style>
+        :root {
+            --text-color: #000000;
+            --color-text-light: #000000;
+        }
+
+        .footer-default-two li a {
+            color: #000000;
+        }
+
+        .text-title-theme {
+            color: #000000;
+        }
+    </style>
+
+<style>
+    :root {
+        --text-link-default-color: #82869E;
+        --bg-header: #111111;
+        --bg-footer: #000000;
+        --bg-card: #ffffff;
+        --title-color: #f9f9f9;
+        --text-title-color: #f9f9f9;
+        --color-border-card: #E4E5F0;
+        --text-title-color-dark: #000000;
+        --color-sub-text: #656462;
+        --bg-btn-theme: #d13639;
+        --bg-item-hover: #333;
+        --bg-layout: #0A1428;
+        --bg-modal: #fff;
+        --bg-component: #ffffff;
+        --bg-input: #2b2a29;
+        --color-text-bg-dark: #000000;
+        --color-text-light: #f9f9f9;
+        --bg-icon-header: #2b2a29;
+        --text-color: #000000;
+        --text-title: #000000;
+        --primary-hover-color: #d13639;
+        --profile-color: #000000;
+        --border-default-color: #E4E5F0;
+        
+        --background-fs: transparent;
+        --background-fs-2: transparent;
+        --background-fs-3: transparent;
+
+        --background-title-fs: #ef4757;
+        --background-title-fs-2: #ef4757;
+        --background-title-fs-3: #7451d1;;
+
+        --text-title-fs: #ffffff;
+        --text-title-fs-2: #ffffff;
+        --text-title-fs-3: #ffffff;
+
+        --background-countdown-fs: #FC530B;
+        --background-countdown-fs-2: #FC530B;
+        --background-countdown-fs-3: #FC530B;
+
+        --text-countdown-fs: #ffffff;
+        --text-countdown-fs-2: #ffffff;
+        --text-countdown-fs-3: #ffffff;
+
+        --background-time-fs: #fff;
+        --background-time-fs-2: #fff;
+        --background-time-fs-3: #fff;
+
+        --text-time-fs: #fff;
+        --text-time-fs-2: #fff;
+        --text-time-fs-3: #fff;
+
+        --border-card-fs: #fff;
+        --border-card-fs-2: #fff;
+        --border-card-fs-3: #fff;
+
+        --background-card-fs: #fff;
+        --background-card-fs-2: #fff;
+        --background-card-fs-3: #fff;
+
+        --text-title-card-fs: #111;
+        --text-title-card-fs-2: #111;
+        --text-title-card-fs-3: #111;
+
+        --price-old-card-fs: #82869E;
+        --price-old-card-fs-2: #82869E;
+        --price-old-card-fs-3: #82869E;
+
+        --price-card-fs: #ef4757;
+        --price-card-fs-2: #ef4757;
+        --price-card-fs-3: #ef4757;
+
+        --border-button-fs: #ef4757;
+        --border-button-fs-2: #ef4757;
+        --border-button-fs-3: #ef4757;
+
+        --background-button-fs: #fff;
+        --background-button-fs-2: #fff;
+        --background-button-fs-3: #fff;
+
+        --text-button-fs: #ef4757;
+        --text-button-fs-2: #ef4757;
+        --text-button-fs-3: #ef4757;
+
+
+        --border-item-theme: #1ee969;
+
+    }
+</style>
+
+<style>
+    body {
+        font-family: Riot Sans Latin;
+    }
+</style>
+
+    <style>
+        #captcha_regis, #captcha_login, #captcha_charge, #captcha_charge_home, #captcha_login_mob, #captcha_regis_mob, #captcha_charge_modal {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="hidden" value="1" id="sys_register_finger">
+    <input type="hidden" value="0" id="sys_charge_finger">
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCC2C34S" height="0" width="0"
+            style="display:none;visibility:hidden" title="GTM">
+        </iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    
+    <header id="heading">
+        <nav class="heading">
+    <div class="container c-container header-container">
+        <div class="box-logo">
+            <a href="/">
+                <img th:src="@{homePage/images/Logo%20Rito%20Ecosystem.png}" alt="logo-shop" class="d-lg-block d-none">
+				<img th:src="@{homePage/images/Logo%20Rito%20Ecosystem.png}" alt="logo-shop-mob" class="d-lg-none">
+			</a>
+        </div>
+        <div class="d-flex">
+
+            <div class="d-lg-none ml-2">
+                <div class="box-notify-1 ">
+                    <div class="box-icon brs-8 menu-header-mob-icon">
+                        <svg viewBox="0 0 48 48"><title>burgerNav</title><path d="M125.6 119.08a18 18 0 0 1 18-18h12a18 18 0 0 1 18 18v12a18 18 0 0 1-18 18h-12a18 18 0 0 1-18-18Z" transform="translate(-125.6 -101.08)" style="fill:gray;fill-opacity:.2"></path><path d="M140.6 119.08h18v2h-18Zm0 5h18v2h-18Zm0 7v-2h18v2Z" transform="translate(-125.6 -101.08)" style="fill:#fcfcfc"></path></svg>
+                    </div>
+                </div>
+                <style>
+    .menu-header-mob-new{
+                   width: 100%;
+                   height: 100%;
+                   max-width: 100vw;
+                   max-height: 100vh;
+                   aspect-ratio: 16 / 9;
+                   background: #1f1f1f;
+                   box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, .2);
+                   margin: 0;
+                   left: 0;
+                   top: 0;
+                   position: fixed;
+               }
+   .menu-header-mob-main{
+       color: var(--text-title-color);
+       font-size: 16px;
+       font-weight: 900;
+       line-height: 1.5;
+       letter-spacing: .08em;
+       text-transform: uppercase;
+       transition: color 1s cubic-bezier(0.06, 0.81, 0, 0.98);
+       cursor: pointer;
+   }
+   .search-menu-header-mob-new{
+       background-color: #2b2a29 !important;
+       font-weight: 700 !important;
+       text-transform: uppercase !important;
+       color: #fff !important;
+       font-size: 12px !important;
+       border-top-style: hidden !important;
+       border-right-style: hidden !important;
+       border-left-style: hidden !important;
+       border-bottom-style: hidden !important;
+       outline: 0 !important;
+       /* margin-right: 10px; */
+       border-radius: 1.6rem !important;
+       padding: .5rem 2.8rem .5rem 1.4rem !important;
+       height: unset !important;
+       box-shadow: inset 0 0 0 1px #fff;
+       border: 1px solid #fff !important;
+   }
+   .formSearchHeaderMob i{
+       top: -35px;
+       left: 100%;
+       transform: translate(-200%, 50%);
+       color: #fff;
+       font-size: 16px;
+   }
+   .btn-login-header-new{
+       border-radius: 1.6rem !important;
+       background: rgb(209, 54, 57);
+       color: black;
+   }
+   .menu-header-mob-main{
+        text-decoration: none;
+   }
+   .menu-header-mob-main:hover{
+        text-decoration: none;
+        color: white
+   }
+   /* .text-a-header-mob{
+        font-family: "Neue Frutiger World", Tahoma, sans-serif;
+   } */
+
+</style>
+
+
+ <script>
+    $(document).ready(function() {
+        $('.menu-header-mob-icon').click(function() {
+            $('.menu-header-mob-new').removeClass('d-none');
+        });
+        $('.menu-header-mob-icon-close').click(function() {
+            $('.menu-header-mob-new').addClass('d-none');
+        });
+    });
+</script> 
+           </div>
+            </div>
+    </div>
+
+
+                                                                                                                                                                                                                                                                        </nav>
+    <div class="menu-list w-100 d-none d-lg-block" style="">
+        <div class="menu-category ">
+        <div class="container c-container">
+            <ul class="d-flex justify-content-between px-0">
+                                                                                                                        <li class="w-100 c-px-4">
+                                    <a href="/">
+                                        <div class="c-p-8 brs-8 d-flex justify-content-center align-items-center " style="white-space: nowrap;">
+                                            <div>
+                                                                                                    <img th:src="@{homePage/images/home.png}" alt="Trang chủ" class="c-pr-4">
+                                                
+                                                                                            </div>
+                                            <span class="fw-500 fz-15 lh-24 ">Trang chủ</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                                                                                                                                                                                <li class="w-100 c-px-4">
+                                    <a href="https://shoprito.com/tin-tuc/chung-toi-la-ai" target="_blank">
+                                        <div class="c-p-8 brs-8 d-flex justify-content-center align-items-center " style="white-space: nowrap;">
+                                            <div>
+                                                                                                    <img th:src="@{homePage/images/we.png}" alt="Chúng tôi là ai?" class="c-pr-4">
+                                                
+                                                                                            </div>
+                                            <span class="fw-500 fz-15 lh-24 ">Chúng tôi là ai?</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                                                                                                                                                                                <li class="w-100 c-px-4">
+                                    <a href="https://discord.gg/h9Dv6FptDf" target="_blank">
+                                        <div class="c-p-8 brs-8 d-flex justify-content-center align-items-center " style="white-space: nowrap;">
+                                            <div>
+                                                                                                    <img th:src="@{homePage/images/work.png}" alt="Làm việc với chúng tôi" class="c-pr-4">
+                                                
+                                                                                            </div>
+                                            <span class="fw-500 fz-15 lh-24 ">Làm việc với chúng tôi</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                                                                                                                                                                                <li class="w-100 c-px-4">
+                                    <a href="/tin-tuc" target="_blank">
+                                        <div class="c-p-8 brs-8 d-flex justify-content-center align-items-center " style="white-space: nowrap;">
+                                            <div>
+                                                                                                    <img th:src="@{homePage/images/news.png}" alt="Tin tức" class="c-pr-4">
+                                                
+                                                                                            </div>
+                                            <span class="fw-500 fz-15 lh-24 ">Tin tức</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                                                                                    </ul>
+        </div>
+    </div>
+    </div>
+    </header>
+
+	<div class="layout main-lay-out">
+	
+		<div class="content" style="">	
+			<div class="container c-container"></div>
+			<link rel="stylesheet" th:href="@{homePage/css/video_banner.css}">
+			<div class="video-full-web w-100 position-relative">
+			    <video autoplay="" muted="" loop="" playsinline="" style="min-height: 554px;">
+			        <source src="media/video_banner_home.mp4" type="video/mp4">
+			    </video>
+			    <div class="col-12 col-md-8 video-full-web-title ">
+			        <p class="text-video-full mb-0 d-none d-lg-block">CHÀO MỪNG BẠN ĐẾN VỚI HỆ SINH THÁI</p>
+			        <p class="text-video-full mb-0 d-block d-lg-none">CHÀO MỪNG BẠN ĐẾN VỚI <br> HỆ SINH THÁI</p>
+			        <h1 style="font-size: 80px;font-weight: bold" class="text-center text-white pt-1">RITO</h1>
+			        <h4 class="text-center text-white mt-4 mb-5 d-none d-lg-block">Nơi quy tụ dịch vụ game hàng đầu</h4>
+			        <h4 class="text-center text-white mt-4 mb-5 d-block d-lg-none">Nơi quy tụ <br> dịch vụ game hàng đầu</h4>
+			        <div class="col-12 d-flex justify-content-center mt-4">
+			            <a href="/tin-tuc/chung-toi-la-ai" class="btn-tim-hieu" target="_blank" rel="noopener">
+			                <div class="d-flex justify-content-center col-12">
+			                    <div class="btn-banner-arrow d-flex justify-content-center align-items-center">
+			                        <span class="icon">
+			                            <svg style="width: 24;height: 24px;" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.003 14H3.5v-4h11.502l-4.165-4.538 2.705-2.947 7.353 8.012c.747.813.747 2.133 0 2.947l-7.353 8.011-2.705-2.947L15.003 14z" fill="#F0F0F0">
+			                                </path>
+			                            </svg>
+			                        </span>
+			                    </div>
+			                    <span class="text-btn-banner-arrow fw-800 fz-28 pl-3">
+			                        Tìm hiểu thêm
+			                    </span>
+			                </div>
+			            </a>
+			        </div>
+			    </div>
+			</div>
+		
+		<div class="container c-container">
+			<div class="c-pt-16">
+		        <div class="our-games c-mb-8">
+		            <h2 class="text-white fz-40 fz-lg-32 lh-28 fw-700">Dịch Vụ</h2>
+		        </div>
+		        <div class="row justify-content-center">
+		        
+		                 <div class="col-12 col-lg-6">
+		                    <div class="banner-game-riot swiper-general c-pt-16 c-pt-lg-8 c-mt-0">
+		                        <div class="single-slide w-100">
+		                            <a href="#" target="_blank">
+		                                <img onerror="imgError(this)" width="1200" height="370" loading="lazy" th:src="@{homePage/images/Rito%20LOL%281%29.png}" alt="img-banner">
+		                            </a>
+		                        </div>
+		                    </div>
+		                </div>
+		                 
+		                 <div class="col-12 col-lg-6">
+		                    <div class="banner-game-riot swiper-general c-pt-16 c-pt-lg-8 c-mt-0">
+		                        <div class="single-slide w-100">
+		                            <a href="/test" target="_blank">
+		                                <img onerror="imgError(this)" width="1200" height="370" loading="lazy" th:src="@{homePage/images/Rito%20VAL.jpg}" alt="img-banner">
+		                            </a>
+		                        </div>
+		                    </div>
+		                </div>
+		                 
+		                 <div class="col-12 col-lg-6">
+		                    <div class="banner-game-riot swiper-general c-pt-16 c-pt-lg-8 c-mt-0">
+		                        <div class="single-slide w-100">
+		                            <a href="https://lq.shoprito.com/" target="_blank">
+		                                <img onerror="imgError(this)" width="1200" height="370" loading="lazy" th:src="@{homePage/images/Rito%20Lien%20Quan.jpg}" alt="img-banner">
+		                            </a>
+		                        </div>
+		                    </div>
+		                </div>
+		                 
+		                 <div class="col-12 col-lg-6">
+		                    <div class="banner-game-riot swiper-general c-pt-16 c-pt-lg-8 c-mt-0">
+		                        <div class="single-slide w-100">
+		                            <a href="https://ff.shoprito.com/" target="_blank">
+		                                <img onerror="imgError(this)" width="1200" height="370" loading="lazy" th:src="@{homePage/images/Rito%20Free%20Fire.png}" alt="img-banner">
+		                            </a>
+		                        </div>
+		                    </div>
+		                </div>
+		                   
+				</div>
+			</div>
+		</div>
+			
+		</div>	
+	</div>
+
+	
+
+
+
+
+<!-- <script>
+        let sitekey;
+</script>
+	Js Login Modal
+	<div th:replace="Public/loginModal :: login"></div>
+	End Login Modal
+	 -->
+     <style>
+        @media  screen and (max-width: 992px) {
+            .discord-container-one {
+                bottom: 90px !important;
+            }
+        }
+    </style>
+    
+
+<footer th:replace="~{Public/footerTest :: footerTest}"></footer>
+   
+	
+
+    <script th:src="@{homePage/js/bootstrap.min.js}"></script>
+
+    
+    
+    <script th:src="@{homePage/js/toastr.min.js}"></script>
+    <script th:src="@{homePage/js/sw2.js}"></script>
+    <script th:src="@{homePage/js/select-nice.js}"></script>
+    
+    <script th:src="@{homePage/js/popper.min.js}"></script>
+    <script th:src="@{homePage/js/tippy-bundle.umd.js}"></script>
+    <script th:src="@{homePage/js/jquery-steps.js}"></script>
+    <script th:src="@{homePage/js/easing.js}"></script>
+    <script th:src="@{homePage/js/nouislider.min.js}"></script>
+
+    <script th:src="@{homePage/js/fancybox.umd.js}"></script>
+    <script th:src="@{homePage/js/jquery.fancybox.min.js}"></script>
+    <script th:src="@{homePage/js/OwlCarousel2.min.js}"></script>
+    <script th:src="@{homePage/js/slick.min.js}"></script>
+    <script th:src="@{homePage/js/moment.js}"></script>
+    <script th:src="@{homePage/js/bootstrap-datetimepicker.js}"></script>
+    <script th:src="@{homePage/js/validate.js}"></script>
+    <script th:src="@{homePage/js/form-validate.js}"></script>
+    <script th:src="@{homePage/js/vi.js}"></script>
+    <script th:src="@{homePage/js/main_2.js}"></script>
+    <script th:src="@{homePage/js/header.js}"></script>
+    <script th:src="@{homePage/js/thegioididong.js}"></script>
+    <script th:src="@{homePage/js/notify.js}"></script>
+    <script th:src="@{homePage/js/instruct.js}"></script>
+    <script th:src="@{homePage/js/swiper-slider-conf.js}">
+    </script>
+    <script th:src="@{homePage/js/swiper-banner.js}"></script>
+    <script th:src="@{homePage/js/main.js}"></script>
+    <script th:src="@{homePage/js/handle.js}">
+    </script>
+    <script th:src="@{homePage/js/style.js}"></script>
+    <script th:src="@{homePage/js/getQuantity.js}"></script>
+    <script th:src="@{homePage/js/toctoc.js}"></script>
+    
+        <script th:src="@{homePage/js/notification.js}"></script>
+    <script th:src="@{homePage/js/store-card.js}"></script>
+    <script th:src="@{homePage/js/top_charge.js}"></script>
+            
+
+
+</body>
+</html>

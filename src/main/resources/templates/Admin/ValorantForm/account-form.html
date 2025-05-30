@@ -31,6 +31,10 @@
                 <textarea class="form-control" id="description" th:field="*{description}"></textarea>
             </div>
             <div class="mb-3">
+                <label for="inventoryQuantity" class="form-label">Số lượng tài khoản</label>
+                <textarea class="form-control" id="inventoryQuantity" th:field="*{inventoryQuantity}"></textarea>
+            </div>
+            <div class="mb-3">
                 <label for="status" class="form-label">Trạng thái</label>
                 <select class="form-select" id="status" th:field="*{status}">
                     <option value="available">Available</option>

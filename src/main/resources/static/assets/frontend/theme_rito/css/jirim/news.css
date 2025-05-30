@@ -1,0 +1,28 @@
+.btn-news {
+    color: #ffffff;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-news:hover {
+    background-color: var(--primary-hover-color);
+    color: #ffffff;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+#formSearchHeaderr {
+    width: 34%;
+}
+
+@media only screen and (max-width: 576px) {
+    #formSearchHeaderr {
+        width: 100%;
+    }
+
+    .j-flex-sm-wrap {
+        flex-wrap: wrap !important;
+    }
+}

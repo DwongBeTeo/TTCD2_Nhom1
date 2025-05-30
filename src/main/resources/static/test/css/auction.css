@@ -1,0 +1,105 @@
+.btn-category-auction{
+    padding: 0rem 1.5rem;
+    color: var(--text-title-color);
+    font-weight: 500;
+    position: relative;
+    font-size: 16px;
+}
+
+.btn-category-auction:hover{
+    color: var(--primary-hover-color);
+}
+.btn-category-auction.active{
+    color: var(--primary-hover-color) !important;
+}
+.btn-category-auction.active::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 50%;
+    height: 3px;
+    background-color: var(--primary-hover-color) !important;
+    transform: translateX(-50%);
+    border-radius: 3px;
+}
+.card-thumb-dau-gia{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    background: #fff;
+    transform: translate(10px,10px);
+    z-index: 5;
+}
+
+.card-thumb-dau-gia img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+
+}
+
+.item-dau-gia{
+    height: unset;
+}
+.item-dau-gia:hover{
+    border: 2px solid var(--primary-hover-color);
+}
+/* #slide_auction .navigation{
+    top: 50% !important;
+    transform: translate(0, -50%) !important;
+
+}
+
+#slide_auction .navigation.slider-next{
+    transform: translate(0, -50%) rotate(-180deg) !important;
+} */
+
+.num-bids-dau-gia{
+    position: absolute;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    top: -45px;
+    left: 10px;
+    background: #fff;
+    border-radius: 30px;
+    padding: 0 10px;
+}
+
+.title-auction{
+    background: var(--background-title-fs-3);
+    padding: 16px 0 16px 0;
+    border-radius: 12px;
+}
+
+.countdown-timer, .countdown-timer-no,.countdown-timer span{
+    color: var(--text-link-default-color) !important;
+}
+
+@keyframes blink-border-shadow {
+    0% { 
+        border-color: #dc3545; 
+        box-shadow: 0 0 20px rgba(220, 53, 69, 0.8); 
+        border-radius: 12px;
+    }
+    50% { 
+        border-color: transparent; 
+        box-shadow: none; 
+        border-radius: 12px;
+    }
+    100% { 
+        border-color: #dc3545; 
+        box-shadow: 0 0 15px rgba(220, 53, 69, 0.8); 
+        border-radius: 12px;
+    }
+}
+
+.card.danger-auction{
+    animation: blink-border-shadow 1s infinite ;
+}

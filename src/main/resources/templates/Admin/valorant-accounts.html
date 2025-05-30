@@ -22,9 +22,6 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a th:href="@{/dashboard}" class="nav-link">dashboard</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
         <a th:href="@{/valorant-accounts}" class="nav-link">Valorant</a>
       </li>
     </ul>
@@ -250,6 +247,7 @@
 
     <!-- Main content -->
 	    <div th:fragment="content">
+        <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -269,6 +267,7 @@
                                 <th>Weapon Skins</th>
                                 <th>Price</th>
                                 <th>Description</th>
+                                <th>Inventory Quantity</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -281,18 +280,35 @@
                                 <td th:text="${account.numberOfWeaponSkins}"></td>
                                 <td th:text="${account.price}"></td>
                                 <td th:text="${account.description}"></td>
+                                <td th:text="${account.inventoryQuantity}"></td>
                                 <td th:text="${account.status}"></td>
                                 <td>
                                     <a th:href="@{/valorant-accounts/edit/{id}(id=${account.accountId})}" class="btn btn-sm btn-primary">Sửa</a>
-                        			<a th:href="@{/valorant-accounts/delete/{id}(id=${account.accountId})}" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc muốn xóa tài khoản này?')">Xóa</a>
+                                    <a th:href="@{/valorant-accounts/delete/{id}(id=${account.accountId})}" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc muốn xóa tài khoản này?')">Xóa</a>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                        <!-- Phân trang -->
+                        <div class="mt-4 d-flex justify-content-between align-items-center">
+                            <div>
+                                <span>Tổng số tài khoản: </span><span th:text="${totalItems}"></span>
+                                <span> | Trang </span><span th:text="${currentPage + 1}"></span>
+                                <span> / </span><span th:text="${totalPages}"></span>
+                            </div>
+                            <div>
+                                <a th:if="${currentPage > 0}" th:href="@{/valorant-accounts(page=${currentPage - 1}, size=${pageSize})}" class="btn btn-sm btn-outline-secondary me-2">Previous</a>
+                                <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                                    <a th:href="@{/valorant-accounts(page=${i}, size=${pageSize})}" th:class="${i == currentPage} ? 'btn btn-sm btn-primary mx-1' : 'btn btn-sm btn-outline-secondary mx-1'" th:text="${i + 1}"></a>
+                                </span>
+                                <a th:if="${currentPage < totalPages - 1}" th:href="@{/valorant-accounts(page=${currentPage + 1}, size=${pageSize})}" class="btn btn-sm btn-outline-secondary ms-2">Next</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- /Main.content -->
   </div>

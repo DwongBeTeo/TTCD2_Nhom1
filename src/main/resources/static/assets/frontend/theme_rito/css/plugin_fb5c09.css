@@ -1,0 +1,81 @@
+.fb-container {
+    background: none;
+    border-radius: 60px;
+    bottom: 24px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px 0px;
+    display: block;
+    height: 60px;
+    margin: 0px 12px;
+    overflow: visible;
+    padding: 0px;
+    position: fixed;
+    right: 12px;
+    top: auto;
+    width: 60px;
+    z-index: 9999999999999999999;
+}
+.fb-svg, .tel-svg, .go-to-top, .back-shop {
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+}
+.fb-svg {
+    background-color: #0a7cff;
+}
+.tel-svg {
+    background-color: #29d331;
+}
+@media screen and (max-width: 992px) {
+    .fb-container {
+        bottom: 90px;
+    }
+}
+
+.discord-container {
+    background: none;
+    border-radius: 60px;
+    bottom: 96px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px 0px;
+    display: block;
+    height: 60px;
+    margin: 0px 12px;
+    overflow: visible;
+    padding: 0px;
+    position: fixed;
+    right: 12px;
+    top: auto;
+    width: 60px;
+    z-index: 9999999999999999999;
+}
+.discord-container-one {
+    background: none;
+    border-radius: 60px;
+    bottom: 24px;
+    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px 0px; */
+    display: block;
+    /* height: 60px; */
+    margin: 0px 12px;
+    overflow: visible;
+    padding: 0px;
+    position: fixed;
+    right: 12px;
+    top: auto;
+    width: 60px;
+    z-index: 9999999999999999999;
+}
+.discord-svg {
+    width: 60px;
+    height: 60px;
+    background-color: #0a7cff;
+    border-radius: 60px;
+}
+
+@media screen and (max-width: 992px) {
+    .discord-container {
+        bottom: 162px;
+    }
+    .discord-container-one {
+        bottom: 20px;
+    }
+}
+

@@ -1,0 +1,113 @@
+.rs-container * {
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.rs-container {
+    height: 45px;
+    position: relative
+}
+
+.rs-container .rs-bg, .rs-container .rs-selected {
+    background-color: var(--border-default-color);
+    height: 4px;
+    left: 0;
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    border-radius: 4px
+}
+
+.rs-container .rs-selected {
+    background-color: var(--primary-color);
+    height: 4px;
+    transition: all .2s linear;
+    width: 0
+}
+
+.rs-container.disabled .rs-selected {
+    background-color: var(--border-default-color);
+}
+
+.rs-container .rs-pointer {
+    background-color: var(--primary-color);
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    border-radius: 100%;
+    left: -10px;
+    position: absolute;
+    top: 0;
+    transition: all .2s linear;
+    transform: translateY(calc(-50% + 6px));
+}
+
+.rs-container.disabled .rs-pointer {
+    border-color: #ccc;
+    cursor: default
+}
+
+.rs-container.sliding .rs-pointer, .rs-container.sliding .rs-selected {
+    transition: none
+}
+
+.rs-container .rs-scale {
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 5px;
+    white-space: nowrap
+}
+
+.rs-container .rs-scale span {
+    float: left;
+    position: relative
+}
+
+.rs-container .rs-scale span::before {
+    background-color: #ededed;
+    content: "";
+    height: 8px;
+    left: 0;
+    position: absolute;
+    top: 10px;
+    width: 1px
+}
+
+.rs-container.rs-noscale span::before {
+    display: none
+}
+
+.rs-container.rs-noscale span:first-child::before, .rs-container.rs-noscale span:last-child::before {
+    display: block
+}
+
+.rs-container .rs-scale span:last-child {
+    margin-left: -1px;
+    width: 0
+}
+.rs-tooltip {
+    color: var(--text-color);
+    background-color: var(--input-disable-color);
+    border-radius: 4px;
+    position: absolute;
+    transform: translate(-50%, -40px);
+    left: 13px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.85;
+    padding: 2px 8px;
+}
+
+.rs-container.disabled .rs-pointer,
+.rs-container.disabled .rs-selected
+{
+    background-color: var(--ghost-border-default-color);
+}
+
