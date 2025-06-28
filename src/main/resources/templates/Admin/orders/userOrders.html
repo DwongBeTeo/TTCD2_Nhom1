@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lịch sử mua hàng của khách hàng</title>
+    <link rel="stylesheet" href="/homePage/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h1>Lịch sử mua hàng của khách hàng: <span th:text="${orders[0].username != null} ? ${orders[0].username} : 'Không xác định'"></span></h1>
+    <div th:if="${message}" class="alert alert-info" th:text="${message}"></div>
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+    <div th:if="${orders != null && !orders.isEmpty()}">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Chi tiết đơn hàng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${orders}">
+                    <td>
+                        <!-- <button class="btn btn-info" th:onclick="'showDetails(\'details-' + ${order.orderId} + '\')'">Xem chi tiết</button>-->
+                        <div th:id="'details-' + ${order.orderId}" style="width: 100%;">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Game</th>
+                                        <th>Tài khoản ID</th>
+                                        <th>Số lượng</th>
+                                        <th>Giá</th>
+                                        <th>Mô tả</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="detail : ${order.orderDetails}">
+                                        <td th:text="${detail.gameName}"></td>
+                                        <td th:text="${detail.accountId}"></td>
+                                        <td th:text="${detail.quantity}"></td>
+                                        <td th:text="${#numbers.formatDecimal(detail.price, 1, 2)} + ' VNĐ'"></td>
+                                        <td th:text="${detail.description}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:if="${orders == null || orders.isEmpty()}">
+        <p>Khách hàng chưa có đơn hàng nào.</p>
+    </div>
+    <a th:href="@{/admin/orders}" class="btn btn-secondary">Quay lại danh sách đơn hàng</a>
+    <!-- <script>
+        function showDetails(id) {
+            console.log('showDetails called with id:', id);
+            var element = document.getElementById(id);
+            if (element) {
+                console.log('Element found:', element);
+                element.style.display = element.style.display === 'none' ? 'block' : 'none';
+            } else {
+                console.error('Element with id ' + id + ' not found');
+            }
+        }
+    </script> -->
+</body>
+</html>

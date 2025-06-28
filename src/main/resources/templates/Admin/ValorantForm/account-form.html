@@ -30,10 +30,23 @@
                 <label for="description" class="form-label">Mô tả</label>
                 <textarea class="form-control" id="description" th:field="*{description}"></textarea>
             </div>
+            
             <div class="mb-3">
-                <label for="inventoryQuantity" class="form-label">Số lượng tài khoản</label>
-                <textarea class="form-control" id="inventoryQuantity" th:field="*{inventoryQuantity}"></textarea>
-            </div>
+	            <label for="usernameValorant" class="form-label">Tên tài khoản</label>
+	            <input type="text" class="form-control" id="usernameValorant" th:field="*{usernameValorant}"/>
+	        </div>
+	        <div class="mb-3">
+	            <label for="passwordValorant" class="form-label">Mật khẩu tài khoản</label>
+	            <input type="password" class="form-control" id="passwordValorant" th:field="*{passwordValorant}"/>
+	        </div>
+	        <div class="mb-3">
+	            <label for="emailValorant" class="form-label">Email tài khoản</label>
+	            <input type="email" class="form-control" id="emailValorant" th:field="*{emailValorant}"/>
+	        </div>
+	        <div class="mb-3">
+	            <label for="inventoryQuantity" class="form-label">Số lượng tồn</label>
+	            <input type="number" class="form-control" id="inventoryQuantity" th:field="*{inventoryQuantity}"/>
+	        </div>	
             <div class="mb-3">
                 <label for="status" class="form-label">Trạng thái</label>
                 <select class="form-select" id="status" th:field="*{status}">

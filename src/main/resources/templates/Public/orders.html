@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lịch sử mua hàng</title>
+    <link rel="stylesheet" href="/homePage/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h1>Lịch sử mua hàng của bạn: <span th:text="${username != null} ? ${username} : 'Không xác định'"></span></h1>
+    <div th:if="${message}" class="alert alert-info" th:text="${message}"></div>
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+    <div th:if="${orders != null && !orders.isEmpty()}">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Chi tiết đơn hàng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${orders}">
+				    <td>
+				        <table class="table table-bordered">
+				            <thead>
+				                <tr>
+				                    <th>Game</th>
+				                    <th>Tài khoản ID</th>
+				                    <th>Số lượng</th>
+				                    <th>Giá</th>
+				                    <th>Mô tả</th>
+				                    <th>Tên Tài khoản</th>
+				                    <th>Mật khẩu</th>
+				                </tr>
+				            </thead>
+				            <tbody>
+				                <tr th:each="detail : ${order.orderDetails}">
+				                    <td th:text="${detail.gameName}"></td>
+				                    <td th:text="${detail.accountId}"></td>
+				                    <td th:text="${detail.quantity}"></td>
+				                    <td th:text="${#numbers.formatDecimal(detail.price, 1, 2)} + ' VNĐ'"></td>
+				                    <td th:text="${detail.description}"></td>
+				                    <td th:text="${detail.usernameValorant != null} ? ${detail.usernameValorant} : 'Không có'"></td>
+                                    <td th:text="${detail.passwordValorant != null} ? ${detail.passwordValorant} : 'Không có'"></td>
+				                </tr>
+				            </tbody>
+				        </table>
+				    </td>
+				</tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:if="${orders == null || orders.isEmpty()}">
+        <p>Bạn chưa có đơn hàng nào.</p>
+    </div>
+    <a th:href="@{/listValorantAccount}" class="btn btn-secondary">Quay lại trang chủ</a>
+</body>
+</html>

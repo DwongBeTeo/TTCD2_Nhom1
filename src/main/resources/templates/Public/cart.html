@@ -39,7 +39,7 @@
         <div class="total-price">
             <h3>Tổng tiền: <span id="totalPrice" th:text="${totalPrice != null} ? ${#numbers.formatDecimal(totalPrice, 1, 2)} + ' VNĐ' : '0 VNĐ'"></span></h3>
         </div>
-        <a th:href="@{/checkout}" class="btn btn-primary">Thanh toán</a>
+        <a th:href="@{/checkout}" class="btn btn-primary" onclick="return confirm('Bạn có chắc chắn muốn thanh toán?')">Thanh toán</a>
     </div>
     <div th:if="${cartItems == null || cartItems.isEmpty()}">
         <p>Giỏ hàng của bạn đang trống.</p>

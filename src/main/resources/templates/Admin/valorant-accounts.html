@@ -24,6 +24,9 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a th:href="@{/valorant-accounts}" class="nav-link">Valorant</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a th:href="@{/admin/orders}" class="nav-link">Lịch sử mua hàng của khách hàng</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -246,8 +249,8 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-	    <div th:fragment="content">
-        <div class="container-fluid">
+<div th:fragment="content">
+	<div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -268,6 +271,9 @@
                                 <th>Price</th>
                                 <th>Description</th>
                                 <th>Inventory Quantity</th>
+                                <th>UserName Valorant</th>
+                                <th>Password Valorant</th>
+                                <th>Email Valorant</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -281,6 +287,9 @@
                                 <td th:text="${account.price}"></td>
                                 <td th:text="${account.description}"></td>
                                 <td th:text="${account.inventoryQuantity}"></td>
+                                <td th:text="${account.usernameValorant}"></td>
+                                <td th:text="${account.passwordValorant}"></td>
+                                <td th:text="${account.emailValorant}"></td>
                                 <td th:text="${account.status}"></td>
                                 <td>
                                     <a th:href="@{/valorant-accounts/edit/{id}(id=${account.accountId})}" class="btn btn-sm btn-primary">Sửa</a>
@@ -309,7 +318,7 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
     <!-- /Main.content -->
   </div>
   <!-- /.content-wrapper -->

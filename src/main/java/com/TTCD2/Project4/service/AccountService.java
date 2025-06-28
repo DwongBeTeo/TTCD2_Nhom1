@@ -15,6 +15,7 @@ import com.TTCD2.Project4.entity.PUBGAccount;
 import com.TTCD2.Project4.entity.Transaction;
 import com.TTCD2.Project4.entity.Users;
 import com.TTCD2.Project4.entity.ValorantAccount;
+import com.TTCD2.Project4.entity.ValorantAccount.Status;
 import com.TTCD2.Project4.repository.GameRepository;
 import com.TTCD2.Project4.repository.LienQuanAccountRepository;
 import com.TTCD2.Project4.repository.PUBGAccountRepository;
@@ -59,31 +60,29 @@ public class AccountService {
         }
     }
 
-    public Page<ValorantAccount> getAllAvailableValorantAccounts(Pageable pageable) {
-        try {
-            Page<ValorantAccount> accountPage = valorantAccountRepository.findByStatus(ValorantAccount.Status.available, pageable);
-            System.out.println("Valorant Accounts (filtered): " + accountPage.getContent());
-            return accountPage;
-        } catch (Exception e) {
-            System.err.println("Error fetching Valorant accounts: " + e.getMessage());
-            e.printStackTrace();
-            return Page.empty(pageable); // Trả về trang rỗng nếu có lỗi
-        }
-    }
-    
     public List<ValorantAccount> getAllAvailableValorantAccounts() {
         try {
-            List<ValorantAccount> accounts = valorantAccountRepository.findAll();
-            System.out.println("Valorant Accounts (raw): " + accounts);
-            List<ValorantAccount> availableAccounts = accounts.stream()
-                    .filter(acc -> acc.getStatus() == ValorantAccount.Status.available)
-                    .toList();
+            List<ValorantAccount> availableAccounts = valorantAccountRepository
+                    .findByStatusAndInventoryQuantityGreaterThan(Status.available, 0);
             System.out.println("Valorant Accounts (filtered): " + availableAccounts);
             return availableAccounts;
         } catch (Exception e) {
             System.err.println("Error fetching Valorant accounts: " + e.getMessage());
             e.printStackTrace();
             return new ArrayList<>();
+        }
+    }
+
+    public Page<ValorantAccount> getAllAvailableValorantAccounts(Pageable pageable) {
+        try {
+            Page<ValorantAccount> accountPage = valorantAccountRepository
+                    .findByStatusAndInventoryQuantityGreaterThan(Status.available, 0, pageable);
+            System.out.println("Valorant Accounts (filtered): " + accountPage.getContent());
+            return accountPage;
+        } catch (Exception e) {
+            System.err.println("Error fetching Valorant accounts: " + e.getMessage());
+            e.printStackTrace();
+            return Page.empty(pageable);
         }
     }
 

@@ -92,4 +92,15 @@ public class CartController {
         Integer userId = getCurrentUserId();
         return cartService.getCartItemsWithDetails(userId);
     }
+    @GetMapping("/checkout")
+    public String processCheckout(Model model) {
+        Integer userId = getCurrentUserId();
+        try {
+            cartService.processCheckout(userId);
+            return "Public/paySuccess";
+        } catch (IllegalStateException e) {
+            model.addAttribute("error", e.getMessage());
+            return "redirect:/cart?error";
+        }
+    }
 }

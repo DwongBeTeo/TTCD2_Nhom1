@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -50,6 +51,19 @@ public class ValorantAccount {
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
 
+
+    @Column(name = "username_valorant", nullable = false, unique = true)
+    private String usernameValorant;
+
+    @Column(name = "password_valorant", nullable = false)
+    private String passwordValorant;
+
+    @Column(name = "email_valorant", nullable = false, unique = true)
+    private String emailValorant;
+    
+//    @Version
+//    private Long version; // Để xử lý concurrency
+    
     public enum Status {
         available, sold, pending
     }
@@ -60,7 +74,8 @@ public class ValorantAccount {
 	}
 
 	public ValorantAccount(Integer accountId, String competitive, Integer numberOfAgents, Integer numberOfWeaponSkins,
-			Double price, String description, Status status, Integer inventoryQuantity, LocalDateTime createdAt) {
+			Double price, String description, Integer inventoryQuantity, LocalDateTime createdAt, String usernameValorant,
+			String passwordValorant, String emailValorant, Status status) {
 		super();
 		this.accountId = accountId;
 		this.competitive = competitive;
@@ -68,9 +83,36 @@ public class ValorantAccount {
 		this.numberOfWeaponSkins = numberOfWeaponSkins;
 		this.price = price;
 		this.description = description;
-		this.status = status;
 		this.inventoryQuantity = inventoryQuantity;
+		this.usernameValorant =usernameValorant;
+		this.passwordValorant = passwordValorant;
+		this.emailValorant = emailValorant;
+		this.status = status;
 		this.createdAt = createdAt;
+	}
+
+	public String getUsernameValorant() {
+		return usernameValorant;
+	}
+
+	public void setUsernameValorant(String usernameValorant) {
+		this.usernameValorant = usernameValorant;
+	}
+
+	public String getPasswordValorant() {
+		return passwordValorant;
+	}
+
+	public void setPasswordValorant(String passwordValorant) {
+		this.passwordValorant = passwordValorant;
+	}
+
+	public String getEmailValorant() {
+		return emailValorant;
+	}
+
+	public void setEmailValorant(String emailValorant) {
+		this.emailValorant = emailValorant;
 	}
 
 	// Getters and Setters
@@ -145,6 +187,9 @@ public class ValorantAccount {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
+
+//    public Long getVersion() { return version; }
+//    public void setVersion(Long version) { this.version = version; }
     
 }
 

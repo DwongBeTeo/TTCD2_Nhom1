@@ -283,7 +283,7 @@
                                     </form>
                                     <!-- Nút Mua ngay -->
                                     <div class="col-6 pr-0">
-                                        <button type="button" class="btn primary buyacc google_buy_account h-auto" data-id="ORE1695950" data-price="1550000">
+                                        <button th:href="@{/checkout}" onclick="return confirm('Bạn có chắc chắn muốn mua ngay?')" type="button" class="btn primary buyacc google_buy_account h-auto">
                                         	Mua ngay
                                         </button>
                                     </div>

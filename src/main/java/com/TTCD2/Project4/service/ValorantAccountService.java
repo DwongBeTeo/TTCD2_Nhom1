@@ -34,7 +34,16 @@ public class ValorantAccountService	 {
 
     // Read by ID
     public Optional<ValorantAccount> getAccountById(Integer id) {
-        return repository.findById(id);
+//        return repository.findById(id);  // trả về hết tất cả các sản phẩm có id
+    	try {
+            Optional<ValorantAccount> account = repository.findById(id);
+            // Chỉ trả về nếu Status.available và inventoryQuantity > 0
+            return account.filter(acc -> acc.getStatus() == ValorantAccount.Status.available && acc.getInventoryQuantity() > 0);
+        } catch (Exception e) {
+            System.err.println("Error fetching Valorant account by ID: " + e.getMessage());
+            e.printStackTrace();
+            return Optional.empty();
+        }
     }
 
     // Update
@@ -48,6 +57,9 @@ public class ValorantAccountService	 {
             account.setPrice(updatedAccount.getPrice());
             account.setDescription(updatedAccount.getDescription());
             account.setInventoryQuantity(updatedAccount.getInventoryQuantity());
+            account.setUsernameValorant(updatedAccount.getUsernameValorant());
+            account.setPasswordValorant(updatedAccount.getPasswordValorant());
+            account.setEmailValorant(updatedAccount.getEmailValorant());
             account.setStatus(updatedAccount.getStatus());
             return repository.save(account);	
         } else {

@@ -1,6 +1,6 @@
 package com.TTCD2.Project4.service;
 
-import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,16 +13,20 @@ import com.TTCD2.Project4.dto.CartItemDTO;
 import com.TTCD2.Project4.dto.CartSummaryDTO;
 import com.TTCD2.Project4.entity.Cart;
 import com.TTCD2.Project4.entity.LienQuanAccount;
+import com.TTCD2.Project4.entity.Order;
+import com.TTCD2.Project4.entity.OrderDetail;
 import com.TTCD2.Project4.entity.PUBGAccount;
 import com.TTCD2.Project4.entity.ValorantAccount;
 import com.TTCD2.Project4.repository.CartRepository;
 import com.TTCD2.Project4.repository.LienQuanAccountRepository;
+import com.TTCD2.Project4.repository.OrderDetailRepository;
+import com.TTCD2.Project4.repository.OrderRepository;
 import com.TTCD2.Project4.repository.PUBGAccountRepository;
 import com.TTCD2.Project4.repository.ValorantAccountRepository;
 
 @Service
 public class CartService {
-	@Autowired
+    @Autowired
     private CartRepository cartRepository;
 
     @Autowired
@@ -33,18 +37,22 @@ public class CartService {
 
     @Autowired
     private PUBGAccountRepository pubgAccountRepository;
+    
+    @Autowired
+    private OrderRepository orderRepository;
+
+    @Autowired
+    private OrderDetailRepository orderDetailRepository;
 
     @Transactional
-    // Thêm sản phẩm vào giỏ hàng
     public void addToCart(Integer userId, Integer gameId, Integer accountId) {
-    	// Kiểm tra số lượng tồn trước khi thêm
+        // Kiểm tra số lượng tồn trước khi thêm
         Integer inventoryQuantity = checkInventoryQuantity(gameId, accountId);
         if (inventoryQuantity == null || inventoryQuantity <= 0) {
-            // Có thể ném exception hoặc xử lý theo cách khác (ví dụ: thông báo lỗi)
             throw new IllegalStateException("Số lượng tồn đã hết cho tài khoản này!");
         }
-        
-     // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
+
+        // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
         Optional<Cart> existingCartItem = cartRepository.findByUserIdAndGameIdAndAccountId(userId, gameId, accountId);
         if (existingCartItem.isPresent()) {
             Cart cartItem = existingCartItem.get();
@@ -52,40 +60,74 @@ public class CartService {
             if (currentQuantity >= inventoryQuantity) {
                 throw new IllegalStateException("Số lượng trong giỏ hàng đã đạt giới hạn tồn kho!");
             }
-            cartItem.setQuantity(cartItem.getQuantity() + 1);
+            cartItem.setQuantity(currentQuantity + 1);
+            cartItem.setAddedAt(LocalDateTime.now()); // Cập nhật thời gian thêm
             cartRepository.save(cartItem);
-            // Giảm inventory_quantity khi tăng số lượng trong giỏ hàng
-            reduceInventoryQuantity(gameId, accountId);
         } else {
             Cart cartItem = new Cart();
             cartItem.setUserId(userId);
             cartItem.setGameId(gameId);
             cartItem.setAccountId(accountId);
             cartItem.setQuantity(1);
+            cartItem.setAddedAt(LocalDateTime.now()); // Gán thời gian thêm
             cartRepository.save(cartItem);
-            // Giảm inventory_quantity khi thêm mới vào giỏ hàng
-            reduceInventoryQuantity(gameId, accountId);
         }
     }
-    
+
     @Transactional
     public void removeFromCart(Integer cartId, Integer userId) {
         Optional<Cart> cartItem = cartRepository.findById(cartId);
         if (cartItem.isPresent() && cartItem.get().getUserId().equals(userId)) {
-            Integer gameId = cartItem.get().getGameId();
-            Integer accountId = cartItem.get().getAccountId();
             cartRepository.deleteById(cartId);
-            // Tăng lại inventory_quantity khi xóa khỏi giỏ hàng
-            increaseInventoryQuantity(gameId, accountId);
+            // Không tăng inventoryQuantity khi xóa
         }
     }
 
-    // Lấy danh sách sản phẩm trong giỏ hàng của user
+    @Transactional
+    public void processCheckout(Integer userId) {
+        List<Cart> cartItems = cartRepository.findByUserId(userId);
+        if (cartItems.isEmpty()) {
+            throw new IllegalStateException("Giỏ hàng trống, không thể thanh toán!");
+        }
+
+        // Tạo đơn hàng mới
+        CartSummaryDTO cartSummary = getCartItemsWithDetails(userId);
+        Order order = new Order();
+        order.setUserId(userId);
+        order.setTotalPrice(cartSummary.getTotalPrice());
+        order.setOrderStatus(Order.OrderStatus.completed); // Hoặc pending nếu cần xác nhận
+        order.setCreatedAt(LocalDateTime.now());
+        order = orderRepository.save(order);
+
+        // Tạo chi tiết đơn hàng
+        for (CartItemDTO item : cartSummary.getCartItems()) {
+            Integer inventoryQuantity = checkInventoryQuantity(item.getGameId(), item.getAccountId());
+            if (inventoryQuantity == null || inventoryQuantity < item.getQuantity()) {
+                throw new IllegalStateException("Số lượng tồn không đủ cho tài khoản: " + item.getAccountId());
+            }
+
+            OrderDetail detail = new OrderDetail();
+            detail.setOrderId(order.getOrderId());
+            detail.setGameId(item.getGameId());
+            detail.setAccountId(item.getAccountId());
+            detail.setQuantity(item.getQuantity());
+            detail.setPrice(item.getPrice());
+            detail.setGameName(item.getGameName());
+            detail.setDescription(item.getDescription());
+            orderDetailRepository.save(detail);
+
+            // Trừ số lượng tồn
+            reduceInventoryQuantity(item.getGameId(), item.getAccountId(), item.getQuantity());
+        }
+
+        // Xóa giỏ hàng
+        cartRepository.deleteAll(cartItems);
+    }
+
     public List<Cart> getCartItemsByUserId(Integer userId) {
         return cartRepository.findByUserId(userId);
     }
-    
- // Lấy danh sách sản phẩm trong giỏ hàng kèm chi tiết và tính tổng tiền
+
     public CartSummaryDTO getCartItemsWithDetails(Integer userId) {
         List<Cart> cartItems = cartRepository.findByUserId(userId);
         List<CartItemDTO> cartItemDTOs = new ArrayList<>();
@@ -98,7 +140,6 @@ public class CartService {
             dto.setAccountId(item.getAccountId());
             dto.setQuantity(item.getQuantity());
 
-         // Lấy chi tiết tài khoản dựa trên gameId
             if (item.getGameId() == 1) { // Liên Quân
                 Optional<LienQuanAccount> account = lienQuanAccountRepository.findById(item.getAccountId());
                 if (account.isPresent()) {
@@ -106,7 +147,7 @@ public class CartService {
                     dto.setGameName("Liên Quân");
                     dto.setPrice(acc.getPrice());
                     dto.setDescription(acc.getDescription());
-                    totalPrice += acc.getPrice() * item.getQuantity(); // Cập nhật totalPrice bên ngoài lambda
+                    totalPrice += acc.getPrice() * item.getQuantity();
                 }
             } else if (item.getGameId() == 2) { // Valorant
                 Optional<ValorantAccount> account = valorantAccountRepository.findById(item.getAccountId());
@@ -115,7 +156,7 @@ public class CartService {
                     dto.setGameName("Valorant");
                     dto.setPrice(acc.getPrice());
                     dto.setDescription(acc.getDescription());
-                    totalPrice += acc.getPrice() * item.getQuantity(); // Cập nhật totalPrice bên ngoài lambda
+                    totalPrice += acc.getPrice() * item.getQuantity();
                 }
             } else if (item.getGameId() == 3) { // PUBG
                 Optional<PUBGAccount> account = pubgAccountRepository.findById(item.getAccountId());
@@ -124,7 +165,7 @@ public class CartService {
                     dto.setGameName("PUBG");
                     dto.setPrice(acc.getPrice());
                     dto.setDescription(acc.getDescription());
-                    totalPrice += acc.getPrice() * item.getQuantity(); // Cập nhật totalPrice bên ngoài lambda
+                    totalPrice += acc.getPrice() * item.getQuantity();
                 }
             }
             cartItemDTOs.add(dto);
@@ -135,8 +176,7 @@ public class CartService {
         summary.setTotalPrice(totalPrice);
         return summary;
     }
-    
- // Phương thức kiểm tra số lượng tồn
+
     private Integer checkInventoryQuantity(Integer gameId, Integer accountId) {
         if (gameId == 1) {
             return lienQuanAccountRepository.findById(accountId)
@@ -153,42 +193,41 @@ public class CartService {
         }
         return 0;
     }
-    
- // Phương thức giảm số lượng tồn
-    private void reduceInventoryQuantity(Integer gameId, Integer accountId) {
+
+    private void reduceInventoryQuantity(Integer gameId, Integer accountId, Integer quantity) {
         if (gameId == 1) {
             lienQuanAccountRepository.findById(accountId).ifPresent(acc -> {
-                acc.setInventoryQuantity(acc.getInventoryQuantity() - 1);
+                acc.setInventoryQuantity(acc.getInventoryQuantity() - quantity);
                 lienQuanAccountRepository.save(acc);
             });
         } else if (gameId == 2) {
             valorantAccountRepository.findById(accountId).ifPresent(acc -> {
-                acc.setInventoryQuantity(acc.getInventoryQuantity() - 1);
+                acc.setInventoryQuantity(acc.getInventoryQuantity() - quantity);
                 valorantAccountRepository.save(acc);
             });
         } else if (gameId == 3) {
             pubgAccountRepository.findById(accountId).ifPresent(acc -> {
-                acc.setInventoryQuantity(acc.getInventoryQuantity() - 1);
+                acc.setInventoryQuantity(acc.getInventoryQuantity() - quantity);
                 pubgAccountRepository.save(acc);
             });
         }
     }
 
-    // Phương thức tăng số lượng tồn khi xóa khỏi giỏ hàng
-    private void increaseInventoryQuantity(Integer gameId, Integer accountId) {
+    // Giữ phương thức này để sử dụng trong các trường hợp khác (nếu cần)
+    private void increaseInventoryQuantity(Integer gameId, Integer accountId, Integer quantity) {
         if (gameId == 1) {
             lienQuanAccountRepository.findById(accountId).ifPresent(acc -> {
-                acc.setInventoryQuantity(acc.getInventoryQuantity() + 1);
+                acc.setInventoryQuantity(acc.getInventoryQuantity() + quantity);
                 lienQuanAccountRepository.save(acc);
             });
         } else if (gameId == 2) {
             valorantAccountRepository.findById(accountId).ifPresent(acc -> {
-                acc.setInventoryQuantity(acc.getInventoryQuantity() + 1);
+                acc.setInventoryQuantity(acc.getInventoryQuantity() + quantity);
                 valorantAccountRepository.save(acc);
             });
         } else if (gameId == 3) {
             pubgAccountRepository.findById(accountId).ifPresent(acc -> {
-                acc.setInventoryQuantity(acc.getInventoryQuantity() + 1);
+                acc.setInventoryQuantity(acc.getInventoryQuantity() + quantity);
                 pubgAccountRepository.save(acc);
             });
         }
