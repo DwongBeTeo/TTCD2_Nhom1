@@ -1,0 +1,43 @@
+
+#servicemobile .menu-category li{
+    list-style: none;
+}
+
+#servicemobile .menu-list a{
+    transition: .2s;
+    /*line-height: 60px;*/
+}
+
+#servicemobile .menu-category a .active{
+    background-color: var(--disable-switch-color);
+
+}
+#servicemobile .menu-category span{
+    color: var(--primary-color);
+}
+
+#servicemobile .menu-category a:hover div{
+    transition: .2s;
+    background-color: var(--disable-switch-color);
+}
+#servicemobile .menu-list .menu-category{
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+#servicemobile .menu-category ul{
+    margin: auto;
+}
+#servicemobile .menu-category .menu-category_fixm{
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+#servicemobile .menu-category{
+    padding-top: 20px;
+    border-top: 1px solid #E4E5F0;
+}
+
+#servicemobile .service-mobile-title{
+
+}

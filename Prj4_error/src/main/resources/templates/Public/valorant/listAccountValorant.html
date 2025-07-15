@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<head th:replace="~{Public/headTest :: headTest}"/>
+
+<style>
+        .card-hover:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s;
+        }
+        .account-thumb-image {
+            width: 100%;
+            height: auto;
+        }
+        .account-title {
+            font-size: 1.2rem;
+        }
+        .price-current {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #dc3545;
+        }
+        .price-old {
+            text-decoration: line-through;
+            color: #6c757d;
+        }
+        .pagination-custom .page-item.disabled .page-link {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        .pagination-custom .page-item.active .page-link {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
+        .pagination-custom .page-link {
+            margin: 0 2px;
+        }
+        .hidden-xs {
+            display: inline-block;
+        }
+        @media (max-width: 576px) {
+            .hidden-xs {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <input type="hidden" value="0" id="sys_register_finger">
+    <input type="hidden" value="0" id="sys_charge_finger">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe th:src="@{test/https://www.googletagmanager.com/ns.html?id=GTM-WCC2C34S}" height="0" width="0"
+            style="display:none;visibility:hidden" title="GTM">
+        </iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+            <!-- Google Tag Manager (noscript) -->
+        <noscript>
+            <iframe th:src="@{test/https://www.googletagmanager.com/ns.html?id=GTM-54XZJH6S}"
+                height="0" width="0" style="display:none;visibility:hidden"
+                title="GTM sys_google_tag_manager_body">
+            </iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
+	<!--Header chung cho SHopGame  -->
+	<header th:replace="~{Public/headerTest :: headerTest}"></header>
+	<!-- EndHeader -->
+	
+<div class="layout main-lay-out">
+	<div class="container c-container" id="account-list">
+		<ul class="breadcrumb-list">
+            <li class="breadcrumb-item">
+                <a href="/" class="breadcrumb-link">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="/test" class="breadcrumb-link">Shop Account</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="javascript:void(0)" class="breadcrumb-link">Acc Valorant Drop Mail</a>
+            </li>
+        </ul>
+        
+        <section class="list-account" style="margin-top: 2px">
+                <div class="section-header justify-content-between  d-none d-lg-flex c-py-16">
+                    <h1 class="section-title">Acc Valorant Drop Mail </h1>
+                </div>
+                <div class="filter-account c-my-16 d-none d-lg-flex">
+                    <div class="filter-title text-title fw-700">
+                        Chọn game muốn mua account
+                    </div>
+                            <div class="value-filter">
+                            <div class="nick-findter-data" id="params-filter"></div>
+                            <!-- <div class="show-modal-filter noselect" data-toggle="modal" data-target="#modal-filter">
+                            	Bộ lọc
+                            </div> -->
+                        </div>
+                                    </div>
+
+                                                    <div class="list-related-tag-home">
+                                                                                            </div>
+                
+                <!-- <div class="sort-account c-mb-16 d-none d-lg-flex">
+                    <div class="text-title fw-700" id="numberResult">429 sản phẩm</div>
+					<div class="value-sort d-flex align-items-center">
+                            <div class="text-title fw-700 c-mr-16">
+                                Sắp xếp theo:
+                            </div>
+                            <div>
+                                <a href="#" class="selection active md" data-sort="random">Ngẫu nhiên</a>
+                                <a href="#" class="selection md" data-sort="price_start">Giá từ cao đến thấp</a>
+                                <a href="#" class="selection md" data-sort="price_end">Giá từ thấp đến cao</a>
+                                <a href="#" class="selection md" data-sort="created_at_start">Mới nhất</a>
+                                <a href="#" class="selection md" data-sort="created_at_end">Cũ nhất</a>
+                            </div>
+                        </div>
+                </div> -->
+				<div class="">
+                    <div class="listing-account list-content">
+                    	<div class="item-account" th:each="account : ${accounts}">
+                                <div class="card card-hover d-flex flex-column h-100">
+                                    <a th:href="@{/valorantDetail-{id}(id=${account.accountId})}" class="card-body d-flex flex-column scale-thumb">
+                                        <div class="account-thumb c-mb-8 position-realative">
+                                            <img onerror="imgError(this)" src="https://cdn3.upanh.info/upload/server-sw3/product-acc/1617788/thumb.webp" alt="ORE1619452" class="account-thumb-image lazy">
+                                                                                    </div>
+                                        <div class="account-title mb-auto">
+                                            <div class="text-title fw-700">Acc Valorant Drop Mail</div>
+                                        </div>
+                                        <div class="account-info c-mb-8">
+                                            <div class="info-attr"></div>
+                                            <div class="info-attr c-mb-8">
+                                                ID:<span class="info-attr" th:text="${account.accountId}"></span>
+                                            </div>
+											<div class="info-attr">
+                                            	Rank :<span class="info-attr" th:text="${account.competitive}"></span>
+                                            </div>
+                                            <div class="info-attr">
+												Thông Tin : Drop Email
+	                                        </div>
+										</div>
+                                        <div class="price">
+                                        	<div class="price-current w-100"><span class="info-attr" th:text="${account.price} + ' VNĐ'"></span></div>
+                                                <div class="price-old c-mr-8">3.000.000đ</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+            <div class="c-pt-24 w-100">
+                <div class="default-paginate">
+                    <ul class="pagination pagination-custom">
+                        <!-- Previous Page Link -->
+                        <li class="page-item pre-2" th:classappend="${currentPage <= 1} ? 'disabled' : ''">
+                            <a class="page-link" th:href="@{/listValorantAccount(page=${currentPage - 2}, size=${pageSize})}" th:if="${currentPage > 1}"></a>
+                            <span class="page-link" th:if="${currentPage <= 1}"></span>
+                        </li>
+                        <li class="page-item pre-1" th:classappend="${currentPage == 0} ? 'disabled' : ''">
+                            <a class="page-link" th:href="@{/listValorantAccount(page=${currentPage - 1}, size=${pageSize})}" th:if="${currentPage > 0}"></a>
+                            <span class="page-link" th:if="${currentPage == 0}"></span>
+                        </li>
+
+                        <!-- Page Numbers -->
+                        <!-- Always show page 1 -->
+                        <li class="page-item" th:classappend="${currentPage == 0} ? 'active' : ''">
+                            <a class="page-link" th:href="@{/listValorantAccount(page=0, size=${pageSize})}">1</a>
+                        </li>
+
+                        <!-- Show "..." if currentPage > 3 -->
+                        <li class="page-item hidden-xs" th:if="${currentPage > 3}">
+                            <span class="page-link">...</span>
+                        </li>
+
+                        <!-- Show pages around current page -->
+                        <li class="page-item" th:each="i : ${#numbers.sequence(currentPage - 1 > 1 ? currentPage - 1 : 1, currentPage + 1 < totalPages - 1 ? currentPage + 1 : totalPages - 1)}" th:if="${i > 0 and i < totalPages - 1}" th:classappend="${i == currentPage} ? 'active' : ''">
+                            <a class="page-link" th:href="@{/listValorantAccount(page=${i}, size=${pageSize})}" th:text="${i + 1}"></a>
+                        </li>
+
+                        <!-- Show "..." if currentPage < totalPages - 3 -->
+                        <li class="page-item hidden-xs" th:if="${currentPage < totalPages - 3}">
+                            <span class="page-link">...</span>
+                        </li>
+
+                        <!-- Always show last page if totalPages > 1 -->
+                        <li class="page-item hidden-xs" th:if="${totalPages > 1}" th:classappend="${currentPage == totalPages - 1} ? 'active' : ''">
+                            <a class="page-link" th:href="@{/listValorantAccount(page=${totalPages - 1}, size=${pageSize})}" th:text="${totalPages}"></a>
+                        </li>
+
+                        <!-- Next Page Link -->
+                        <li class="page-item next-1" th:classappend="${currentPage >= totalPages - 1} ? 'disabled' : ''">
+                            <a class="page-link" th:href="@{/listValorantAccount(page=${currentPage + 1}, size=${pageSize})}" th:if="${currentPage < totalPages - 1}" rel="next"></a>
+                            <span class="page-link" th:if="${currentPage >= totalPages - 1}"></span>
+                        </li>
+                        <li class="page-item next-2" th:classappend="${currentPage >= totalPages - 1} ? 'disabled' : ''">
+                            <a class="page-link" th:href="@{/listValorantAccount(page=${currentPage + 2 < totalPages ? currentPage + 2 : totalPages - 1}, size=${pageSize})}" th:if="${currentPage < totalPages - 1}" rel="next"></a>
+                            <span class="page-link" th:if="${currentPage >= totalPages - 1}"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        <input type="text" id="check_confirm_clasue" class="d-none" value="0">
+	</div>
+</div>
+            </section>
+	</div>
+</div>
+	
+
+<script>
+        let sitekey;
+</script>
+    <!-- Js Login Modal -->
+	<div th:replace="Public/loginModal :: login"></div>
+	<!-- End Login Modal -->
+	
+     <style>
+        @media  screen and (max-width: 992px) {
+            .discord-container-one {
+                bottom: 90px !important;
+            }
+        }
+    </style>
+    
+
+<footer th:replace="~{Public/footerTest :: footerTest}"></footer>
+   
+	
+<!-- Javascript -->
+	<div th:replace="~{Public/scripts :: scripts}"></div>
+</body>
+</html>

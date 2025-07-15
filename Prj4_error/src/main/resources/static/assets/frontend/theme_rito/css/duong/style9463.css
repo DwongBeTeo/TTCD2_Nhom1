@@ -1,0 +1,281 @@
+/*Status */
+.status-tag {
+    display: inline-block;
+    padding: 0 .25rem;
+    font-weight: 500;
+    font-size: 10px;
+    border-radius: 4px;
+    line-height: 1.6;
+}
+
+.status-tag.white{
+    color: #434657;
+}
+
+.status-tag.success {
+    background: var(--status-success-color);
+    color: #fff;
+}
+.status-tag.danger{
+    background: var(--invalid-color);
+    color: #fff;
+}
+.status-tag.yellow{
+    background: var(--status-yellow-color);
+    color: #fff;
+}
+.status-tag.red{
+    background: var(--status-red-color);
+    color: #fff;
+}
+.status-tag.blue{
+    background: var(--focus-color);
+    color: #fff;
+}
+.status-tag.gray{
+    background: var(--button-disable-color);
+    color: #fff;
+}
+.status-tag.sd-white{
+    background: var(--input-disable-color);
+    color: #434657;
+}
+.status-tag.sd-success{
+    background: var(--status-sd-success-color);
+    color: #2BB956;
+}
+.status-tag.sd-danger{
+    background: var(--status-sd-danger-color);
+    color: #C43C3C;
+}
+.status-tag.sd-yellow{
+    background: var(--status-sd-yellow-color);
+    color: #E6983A;
+}
+.status-tag.sd-red{
+    background: var(--status-sd-red-color);
+    color: #DF2C3B;
+}
+.status-tag.sd-blue{
+    background: var(--status-sd-blue-color);
+    color: #1990FF;
+}
+.status-tag.outline-white{
+    background-color: #fff;
+    color: var(--text-color);
+    border:0.5px solid var(--text-color) ;
+}
+.status-tag.outline-success {
+    background-color: #fff;
+    color: var(--status-success-color);
+    border:0.5px solid var(--status-success-color)
+}
+.status-tag.outline-danger{
+    background-color: #fff;
+    color: var(--invalid-color);
+    border:0.5px solid var(--invalid-color);
+}
+.status-tag.outline-yellow{
+    background-color: #fff;
+    color: var(--status-yellow-color);
+    border:0.5px solid var(--status-yellow-color);
+}
+.status-tag.outline-red{
+    background-color: #fff;
+    color: var(--status-outline-red-color);
+    border:0.5px solid var(--status-outline-red-color);
+}
+.status-tag.outline-blue{
+    background-color: #fff;
+    color: var(--focus-color);
+    border:0.5px solid var(--focus-color) ;
+}
+.status-tag.outline-gray{
+    background-color: #fff;
+    color: var(--button-disable-color);
+    border:0.5px solid var(--button-disable-color) ;
+}
+/*end status*/
+
+/* avatar */
+.avatar .avatar-icon{
+    border-radius: 40px;
+    width: 24px;
+    height: 24px;
+}
+
+.avatar.king {
+    display: inline-block;
+    position: relative;
+}
+.avatar.king:after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    bottom: 2px;
+    right: 0;
+    background-image: url(../../image/duong/path.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: calc(100% - 2px) calc(100% - 2px);
+    background-color: #fff;
+    border-radius: 100%;
+}
+
+
+.avatar.avatar-sm{
+    width: 32px;
+    height: 32px;
+}
+.avatar.avatar-sm .avatar-icon{
+    width: 32px;
+    height: 32px;
+}
+.avatar-sm.king:after {
+    content: '';
+    display: block;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-image: url(../../image/duong/path.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: calc(100% - 2px) calc(100% - 2px);
+    background-color: #fff;
+    border-radius: 100%;
+}
+
+
+.avatar.avatar-md{
+    width: 40px;
+    height: 40px;
+}
+.avatar.avatar-md .avatar-icon{
+    width: 40px;
+    height: 40px;
+}
+.avatar-md.king:after {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-image: url(../../image/duong/path.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: calc(100% - 2px) calc(100% - 2px);
+    background-color: #fff;
+    border-radius: 100%;
+}
+
+.avatar.avatar-lg{
+    width: 48px;
+    height: 48px;
+}
+.avatar.avatar-lg .avatar-icon{
+    width: 48px;
+    height: 48px;
+}
+.avatar-lg.king:after {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-image: url(../../image/duong/path.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: calc(100% - 2px) calc(100% - 2px);
+    background-color: #fff;
+    border-radius: 100%;
+}
+/* end avatar */
+
+/* quantity */
+.quantity{
+    display: flex;
+    width: 96px;
+    flex-direction: row;
+    justify-content: center;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid var(--border-default-color);
+    padding: 0;
+    text-align: center;
+}
+.quantity-min, .quantity-max {
+    width: 28px;
+    height: 32px;
+    position: relative;
+    cursor: pointer;
+}
+.quantity-min:after, .quantity-max:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    transform: translate(-50%,-50%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.quantity-min:after {
+    background-image: url(../../image/duong/min.svg);
+}
+
+.quantity-max:before
+{
+    background-image: url(../../image/duong/max.svg);
+}
+input.quantity-number,
+input.quantity-number:hover,
+input.quantity-number:focus {
+    border: none;
+    padding: 4px 12px;
+    width: 16px;
+    border-radius: 0;
+}
+.quantity-min {
+    border-right: 1px solid  var(--border-default-color);
+}
+.quantity-max
+{
+    border-left: 1px solid  var(--border-default-color);
+}
+/* end quantity*/
+
+/* slider button */
+.slider-button-hover{
+    border-radius: 0 20px 20px 0;
+    text-align: center;
+    display: inline-block;
+    background:#D9D9D9;
+    width: 40px;
+    height: 40px;
+}
+.slider-button-hover img{
+    padding: 10px;
+}
+.slider-button-default{
+    background:rgba(220, 222, 233, 0.5);
+}
+.slider-button{
+    border-radius: 20px 0 0 20px;
+
+}
+
+/* css border buttom gia soc*/
+.border-bottom-destop{
+    border-bottom: 1px solid #BCBFD6;
+}

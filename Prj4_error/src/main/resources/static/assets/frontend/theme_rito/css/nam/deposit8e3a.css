@@ -1,0 +1,136 @@
+.btn-deposit{
+    height: 60px;
+}
+.btn-deposit span{
+    color: var(--primary-color);
+    text-transform: none;
+}
+.btn-deposit>div img:last-child{
+   display: none;
+}
+.btn-deposit:hover div img:last-child{
+   display: block;
+}
+.btn-deposit:hover div img:first-child{
+   display: none;
+}
+.btn-deposit:hover span{
+    color: white;
+}
+#depositModal .modal-body{
+    max-height: 524px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 4px;
+}
+
+#depositModal .modal-header{
+   background-color: white;
+    box-shadow: 0px -1px 0px 0px #E4E5F0 inset;
+    border-top-left-radius:12px;
+    border-top-right-radius: 12px;
+}
+#depositModal .modal-footer{
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+#depositModal .modal-header .close{
+   right: 16px;
+}
+
+#depositModal .c-deposit-note_footer{
+    background-color: white;
+    box-shadow: 0px -4px 8px 0px rgba(0, 0, 0, 0.05);
+}
+#depositModal .modal-footer{
+    background-color: white;
+
+}
+.c-deposit-note{
+    background: #E8F4FF;
+    border: 1px solid #D1E9FF;
+    color: #1473CC;
+}
+
+
+#depositModal .modal-body:hover::-webkit-scrollbar-thumb{
+
+    background: #BCBFD6;
+}
+#depositModal .modal-body::-webkit-scrollbar-track
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color:  transparent;
+    border: none;
+
+}
+#depositModal .modal-body::-webkit-scrollbar
+{
+    width: 8px;
+    border: none;
+}
+#depositModal .modal-body::-webkit-scrollbar-thumb
+{
+    /*Màu thanh sroll*/
+    background-color: #DCDEE9;
+    border-radius: 100px;
+    border: none;
+    margin-left: 0;
+    height: 0;
+    margin-top: 24px;
+}
+.see-more-deposit {
+    display: inline-block;
+    text-align: center;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    height: 16px;
+    color: var(--primary-color);
+    position: relative;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.see-more-deposit:hover {
+    color: var(--primary-hover-color);
+}
+
+.see-more-deposit:active {
+    color: var(--primary-focus-color);
+}
+
+.see-more-deposit:before {
+    content: attr(data-content);
+}
+
+.see-more-deposit:after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../image/svg/see-more.svg);
+    background-repeat: no-repeat;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-position: 100% center;
+    transition: transform .15s linear;
+    transform-origin: center center;
+}
+
+.see-more-deposit.hide:after {
+    transform: translateY(-50%) rotate(-180deg);
+}
+.see-more-deposit.hide-deposit,.content-deposit-hidden{
+    display: none;
+}
+@media screen and (max-width: 992px){
+    #stepDeposit2 .footer-mobile {
+
+        padding: 12px 16px;
+    }
+}

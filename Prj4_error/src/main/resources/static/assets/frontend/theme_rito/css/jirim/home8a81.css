@@ -1,0 +1,21 @@
+/* search header */
+.tooltip-search-hearder{
+    height: 0;
+    z-index: 1000;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+}
+
+.tooltip-search-header-child{
+    overflow-y: scroll;
+    max-height: 312px;
+    color: #111827;
+    border-radius: 0.375rem;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
+}
+
+.tooltip-search-header-content{
+    flex-direction: column;
+}

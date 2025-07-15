@@ -1,0 +1,664 @@
+/*banner sale*/
+.banner-flashsale, .banner-flashsale-v2, .banner-flashsale-ctv,.banner-flashsale-ctv-nick {
+    width: 100%;
+    background-color: var(--background-fs);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    isolation: isolate;
+    /*padding: 16px;*/
+}
+
+@media (max-width: 576px) {
+    .title-flashsale-home{
+        padding: 6px 0;
+    }
+}
+
+.banner-flashsale-v2 .title-flashsale-home{
+    background: #facd1c;
+    padding: 16px 0 16px 0;
+    border-radius: 12px;
+}
+.banner-flashsale-ctv .title-flashsale-home{
+    background: #7451d1;
+    padding: 16px 0 16px 0;
+    border-radius: 12px;
+}
+
+.banner-flashsale .section-title, .banner-flashsale-v2 .section-title, .banner-flashsale-ctv .section-title,.banner-flashsale-ctv-nick .section-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--text-title-fs);
+}
+
+.bg-detail-nick{
+    background-image: url(../../image/banner_sale/bg-detail-nick.png);
+    background-repeat: no-repeat;
+}
+
+.ic-time-detail{
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+
+.banner-flashsale .section-title .today, .banner-flashsale-v2 .section-title .today,
+.banner-flashsale-ctv .section-title .today,.banner-flashsale-ctv-nick .section-title .today {
+    display: inline-block;
+    padding-left: 28px;
+    background-image: url(../../image/svg/flash-sale.svg);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    margin-left: 5px;
+    background-size: 22px 26px;
+}
+
+.banner-flashsale .section-title .today:after, .banner-flashsale-v2 .section-title .today:after,
+.banner-flashsale-ctv .section-title .today:after,.banner-flashsale-ctv-nick .section-title .today:after {
+    content: 'hôm nay';
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: #fff;
+}
+
+.banner-flashsale .countdown, .banner-flashsale-v2 .countdown, .banner-flashsale-ctv .countdown,.banner-flashsale-ctv-nick .countdown {
+    display: flex;
+}
+
+.box-timer-coundown {
+    display: flex;
+    width: 50px;
+    height: 36px;
+    margin-right: 4px;
+    background-color: var(--background-countdown-fs);
+    border-radius: 5px;
+    color: var(--text-countdown-fs);
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    gap: 3px;
+}
+
+.box-timer-coundown .text-banner-sale{
+    line-height: 5px;
+}
+
+.flashsale-detail-nick .countdown {
+    display: flex;
+}
+.box-timer-coundown-detail-nick {
+    display: flex;
+    width: 32px;
+    height: 36px;
+    padding-top: 4px;
+    margin-right: 4px;
+    background-color: #434657;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.box-timer-coundown-detail-nick .day_config,
+.box-timer-coundown-detail-nick .hour_config,
+.box-timer-coundown-detail-nick .minute_config,
+.box-timer-coundown-detail-nick .second_config{
+    line-height: 10px;
+}
+
+.box-timer-coundown-detail-nick .text-banner-sal e{
+    line-height: 5px;
+}
+.text-end, .text-end-v2, .text-end-ctv, .text-view-all{
+    color: var(--text-title-fs);
+
+}
+
+/* banner config */
+
+.bottom-banner-countdown, .bottom-banner-countdown2, .bottom-banner-countdown-ctv{
+    background-image: url(../../image/banner_sale/bg-flash-sale.png);
+}
+
+.result-countdown, .result-countdown2, .result-countdown-ctv{
+    background: #fff;
+    border-radius: 12px;
+}
+
+.bottom-banner-countdown:first-child, .bottom-banner-countdown2:first-child, .bottom-banner-countdown-ctv:first-child{
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.bottom-banner-countdown:nth-child(5), .bottom-banner-countdown2:nth-child(5), .bottom-banner-countdown-ctv:nth-child(5){
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.banner-config .countdown {
+    display: flex;
+}
+
+.banner-config .countdown > div {
+    width: 32px;
+    height: 32px;
+    margin-right: 4px;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 24px;
+    color: #fff;
+    text-align: center;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.bottom-banner-countdown .text-pri-color, .bottom-banner-countdown p, .bottom-banner-countdown2 .text-pri-color, .bottom-banner-countdown2 p, .bottom-banner-countdown-ctv .text-pri-color, .bottom-banner-countdown-ctv p{
+    color: var(--bg-color);
+}
+
+.text-pri-color, .take-place{
+    color: var(--text-blur);
+}
+
+.title-banner-config{
+    border-bottom-right-radius: 100px;
+    background-color: var(--primary-color);
+    width: 35%;
+    padding: 8px;
+    color: white;
+    margin-bottom: 16px;
+}
+
+
+.box-time-banner{
+    width: 20%;
+}
+
+.click-banner-active:hover{
+    cursor: pointer;
+}
+.banner-flashsale .navigation,  .banner-flashsale-v2 .navigation
+,.banner-flashsale-ctv .navigation,.banner-flashsale-ctv-nick .navigation{
+    top: 30%;
+}
+
+.countdown_time_mobile{
+    display: none;
+}
+.percent_discount:after {
+    content: attr(data-content);
+    position: absolute;
+    width: 54px;
+    height: 24px;
+    top: 0;
+    right: 0;
+    background-color: #FC530B;
+    text-align: center;
+    padding-top: 3px;
+    padding-left: 11px;
+    font-weight: 700;
+    color: #fff;
+    background-image: url(../../image/png/Flash-on.png);
+    background-repeat: no-repeat;
+    background-size: 8px 16px;
+    background-position: 15% 5px;
+    border-radius: 0 0 0 8px;
+}
+.price-flashsale .price-old {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: var(--text-link-default-color);
+    text-decoration: line-through;
+}
+.secondary_flashsale:hover{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.out_of_stock{
+    position: absolute;
+    background: rgba(0, 0, 0, 0.75);
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    border-radius: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+.amt_btn_flashsale .line-1{
+    display: block;
+    font-weight: 700;
+    line-height: 24px;
+    font-size: 15px;
+    color: #005EFF;
+}
+.amt_btn_flashsale .line-2{
+    display: block;
+    font-weight: 700;
+    line-height: 16px;
+    font-size: 12px;
+    color: #0E3EDA;
+}
+.amt_btn_flashsale .secondary {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 16px;
+}
+.amt_btn_flashsale {
+    border-radius: 0.5rem;
+    padding: 8px 16px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 24px;
+    box-sizing: border-box;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    height: 60px;
+    text-transform: capitalize;
+    width: 100%;
+    text-align: center;
+}
+.flashsale-price-current {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 56px;
+    color: #FC530B;
+}
+.discount-flash-sale{
+    padding: 0 8px;
+    background-color: #FC530B;
+    color: #FFF;
+    font-size: 12px;
+    line-height: 16px;
+    border-radius: 16px;
+}
+.out_of_stock_detail{
+    position: absolute;
+    left: 45%;
+    width: 160px;
+    height: 160px;
+    background: rgba(0, 0, 0, 0.75);
+    text-align: center;
+    line-height: 160px;
+    color: #fff;
+    border-radius: 100%;
+    top: -280px;
+    z-index: 99;
+    font-size: 24px;
+    font-weight: 700;
+}
+.bg-info-detail{
+    background-color: #E8F4FF;
+    border: 1px solid #D1E9FF;
+}
+.text-info-detail{
+    color: #1473CC;
+}
+
+.text-time-fs{
+    color: var(--text-color);
+}
+.text-detail-fs{
+    color: #FC530B;
+}
+.buyaccflashsale{
+    height: 60px !important;
+}
+#modalCountdownendtime .modal-content{
+    padding: 24px 0 0 0;
+    width: 310px;
+}
+#modalCountdownendtime{
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.text-start{
+    text-align: start;
+}
+.orderModalFlashSale .modal-content{
+    background: #F3F3F7 !important;
+}
+.orderModalFlashSale .modal-big .card--gray {
+    background: #fff!important;
+    border-radius: 12px;
+}
+@media screen and (max-width:1200px){
+    .img-detail-flash-sale{
+        width: 90%;
+    }
+}
+@media screen and (max-width: 992px){
+    .box-time-banner{
+        width: unset;
+        margin-right: 12px;
+    }
+
+    .result-countdown, .result-countdown2, .result-countdown-ctv{
+        display: none !important;
+    }
+
+    .title-banner-config{
+        width: 41%;
+    }
+    .countdown_time_mobile{
+        display: flex;
+        padding: 10px 0;
+    }
+    .price-flashsale .price-current-flashsale {
+        color: var(--primary-color);
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 24px;
+    }
+    .percent_discount:after {
+        content: attr(data-content);
+        position: absolute;
+        width: 39px;
+        height: 18px;
+        top: 0px;
+        right: 0px;
+        background-color: #FC530B;
+        text-align: center;
+        padding-top: 0px;
+        padding-left: 10px;
+        font-weight: 500;
+        font-size: 9px;
+        color: #fff;
+        background-image: url(../../image/png/Flash-on.png);
+        background-repeat: no-repeat;
+        background-size: 6px 11px;
+        background-position: 14% 3px;
+        border-radius: 0 0 0 8px;
+    }
+    .out_of_stock {
+        font-size: 13px;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.75);
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+        border-radius: 100%;
+        top: -60px;
+        left: 20%;
+        color: #fff;
+    }
+    .out_of_stock_detail {
+        position: absolute;
+        left: 32%;
+        width: 130px;
+        height: 130px;
+        background: rgba(0, 0, 0, 0.75);
+        text-align: center;
+        line-height: 130px;
+        color: #fff;
+        border-radius: 100%;
+        top: -190px;
+        z-index: 99;
+        font-size: 15px;
+        font-weight: 700;
+    }
+    .flashsale-detail-nick .countdown > div {
+        width: 32px;
+        height: 32px;
+        margin-right: 4px;
+        background-color: var(--text-color);
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 24px;
+        color: #fff;
+        text-align: center;
+        padding-bottom: 4px;
+        padding-top: 4px;
+    }
+    .bg-detail-nick .img-detail-flash-sale{
+        width: 12px;
+        height: 14.769px
+    }
+    .text-cussttt{
+        font-size: 10px;
+    }
+    .banner-flashsale, .banner-flashsale-v2, .banner-flashsale-ctv
+    , .banner-flashsale-ctv-nick{
+        background: var(--bg-layout);
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        isolation: isolate;
+        padding: 0;
+        /* background: #fff; */
+    }
+    .title-flashsale-mb{
+        color: #fff;
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 24px;
+        align-items: center;
+    }
+    .bg-detail-nick{
+        margin-left: -16px;
+        margin-right: -16px;
+    }
+    .banner-flashsale-mb{
+        width: 100%;
+        justify-content: space-between;
+    }
+    .tiltel-flashsale-home{
+        /*background: linear-gradient(93deg, #FA700C 0%, #FF4218 100%);*/
+        background-image: url(../../image/banner_sale/Background_flashsale_home_mb.png);
+        padding: 8px 0 8px 0;
+        border-radius: 0 0 0 0;
+        margin: 0 -16px 0 -16px;
+        background-repeat: round;
+    }
+    .text-end{
+        color: #82869E
+    }
+    .amt_btn_flashsale .line-1{
+        display: block;
+        font-weight: 700;
+        line-height: 24px;
+        font-size: 13px;
+        color: #005EFF;
+    }
+    .amt_btn_flashsale .line-2{
+        display: block;
+        font-weight: 400;
+        line-height: 16px;
+        font-size: 10px;
+        color: #0E3EDA;
+    }
+    .banner-flashsale .section-title, .banner-flashsale-v2 .section-title
+    , .banner-flashsale-ctv .section-title,.banner-flashsale-ctv-nick .section-title{
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 24px;
+    }
+    .icon-set-flashsale{
+        width: 15px;
+        height: 17px;
+    }
+    .box-timer-coundown [class^="day_config"],
+    .box-timer-coundown [class^="hour_config"],
+    .box-timer-coundown [class^="minute_config"],
+    .box-timer-coundown [class^="second_config"] {
+        line-height: 10px;
+    }
+
+    .box-timer-coundown .text-banner-sale{
+        line-height: 2px;
+    }
+    .box-timer-coundown-detail-nick {
+        display: flex;
+        width: 28px;
+        height: 28px;
+        margin-right: 4px;
+        background-color: #434657;
+        border-radius: 5px;
+        color: #fff;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 6px;
+        gap: 6px;
+    }
+    .box-timer-coundown-detail-nick .day_config,
+    .box-timer-coundown-detail-nick .hour_config,
+    .box-timer-coundown-detail-nick .minute_config,
+    .box-timer-coundown-detail-nick .second_config{
+        line-height: 8px;
+    }
+
+    .box-timer-coundown-detail-nick .text-banner-sale{
+        line-height: 3px;
+    }
+    .box-timer-coundown {
+        display: flex;
+        width: 28px;
+        height: 28px;
+        margin-right: 4px;
+        background-color: #FC530B;
+        border-radius: 5px;
+        color: #fff;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 6px;
+        gap: 6px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .title-banner-config{
+        width: 53%;
+    }
+}
+
+@media screen and (max-width: 577px){
+    .title-banner-config{
+        width: 44%;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .title-banner-config{
+        width: 48%;
+    }
+}
+
+@media screen and (max-width: 458px){
+    .title-banner-config{
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .title-banner-config{
+        width: 67%;
+    }
+}
+
+#flashsale .title-flashsale-home{
+    background: var(--background-title-fs);
+    padding: 16px 0 16px 0;
+    border-radius: 12px;
+}
+
+/* flashsale2 */
+#banner-flashsale-ctv-nick .title-flashsale-home, #combo .title-flashsale-home{
+    background: var(--background-title-fs-2);
+    padding: 16px 0 16px 0;
+    border-radius: 12px;
+}
+
+/* flashsaleCTV */
+#flashsaleCTV .title-flashsale-home{
+    background: var(--background-title-fs-3);
+    padding: 16px 0 16px 0;
+    border-radius: 12px;
+}
+
+/* flashsale */
+#flashsale .result-countdown{
+    background: var(--background-time-fs);
+    color: var(--text-time-fs);
+}
+#flashsale .card{
+    border-color: var(--border-card-fs);
+    background: var(--background-card-fs);
+}
+#flashsale .card .text-title{
+    color: var(--text-title-card-fs);
+}
+#flashsale .card .price-old{
+    color: var(--price-old-card-fs);
+}
+#flashsale .card .price-current-flashsale{
+    color: var(--price-card-fs);
+}
+#flashsale .card .secondary_flashsale{
+    border-color: var(--border-button-fs);
+    background: var(--background-button-fs);
+    color: var(--text-button-fs);
+}
+
+/* banner-flashsale-ctv-nick */
+.loadjs_option_nick_ctv .result-countdown{
+    background: var(--background-time-fs-2);
+    color: var(--text-time-fs-2);
+}
+.loadjs_option_nick_ctv .card{
+    border-color: var(--border-card-fs-2);
+    background: var(--background-card-fs-2);
+}
+.loadjs_option_nick_ctv .card .text-title{
+    color: var(--text-title-card-fs-2);
+}
+.loadjs_option_nick_ctv .card .price-old{
+    color: var(--price-old-card-fs-2);
+}
+.loadjs_option_nick_ctv .card .price-current-flashsale{
+    color: var(--price-card-fs-2);
+}
+.loadjs_option_nick_ctv .card .secondary_flashsale{
+    border-color: var(--border-button-fs-2);
+    background: var(--background-button-fs-2);
+    color: var(--text-button-fs-2);
+}
+
+/* flashsaleCTV */
+#flashsaleCTV .result-countdown{
+    background: var(--background-time-fs-3);
+    color: var(--text-time-fs-3);
+}
+#flashsaleCTV .card{
+    border-color: var(--border-card-fs-3);
+    background: var(--background-card-fs-3);
+}
+#flashsaleCTV .card .text-title{
+    color: var(--text-title-card-fs-3);
+}
+#flashsaleCTV .card .price-old{
+    color: var(--price-old-card-fs-3);
+}
+#flashsaleCTV .card .price-current-flashsale{
+    color: var(--price-card-fs-3);
+}
+#flashsaleCTV .card .secondary_flashsale{
+    border-color: var(--border-button-fs-3);
+    background: var(--background-button-fs-3);
+    color: var(--text-button-fs-3);
+}
+

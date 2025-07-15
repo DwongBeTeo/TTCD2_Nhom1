@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tài khoản Liên Quân</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h2>Tài khoản Liên Quân</h2>
+    <div th:if="${accounts == null or accounts.isEmpty()}">
+        <p>Không có tài khoản Liên Quân nào khả dụng.</p>
+    </div>
+    <div class="account-list" th:unless="${accounts == null or accounts.isEmpty()}">
+        <div th:each="account : ${accounts}" class="account-card">
+            <h3>Liên Quân - ID: <span th:text="${account.accountId}"></span></h3>
+            <p>Rank: <span th:text="${account.competitive}"></span></p>
+            <p>Số skin: <span th:text="${account.numberOfSkins}"></span></p>
+            <p>Số tướng: <span th:text="${account.numberOfHeroes}"></span></p>
+            <p>Giá: <span th:text="${account.price} + ' VNĐ'"></span></p>
+            <p>Số lượng tồn: <span th:text="${account.inventoryQuantity}"></span></p>
+            <p th:if="${account.description}" th:text="${account.description}"></p>
+            <a th:href="@{/buy/LienQuan/{id}(id=${account.accountId})}" class="buy-button">Mua ngay</a>
+        </div>
+    </div>
+    <p><a href="/products">Quay lại danh sách game</a></p>
+</body>
+</html>
