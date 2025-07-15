@@ -1,0 +1,97 @@
+/* Tổng thể danh sách sản phẩm */
+#product-list {
+  margin-top: 20px;
+}
+
+/* Card sản phẩm */
+
+.cart{
+  width: 15rem;
+  border: 1px solid #ddd;
+}
+
+/* Giảm chiều rộng card và padding */
+.product-card {
+  width: 15rem !important;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Hover card */
+.product-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Giảm khoảng cách giữa các card */
+/* #product-list .row {
+  --bs-gutter-x: 0.5rem;
+  --bs-gutter-y: 0.5rem;
+} */
+
+/* Button */
+.btn-detail {
+  min-width: 100px;
+}
+.btn-add {
+  min-width: 120px;
+}
+
+/* Nút nhỏ gọn hơn */
+.btn-detail,
+.btn-add {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.6rem;
+  min-width: unset;
+}
+
+/* tạo hiệu ứng ribbon góc trên trái */
+.ribbon {
+  position: absolute;
+  top: 0.75rem;
+  left: -0.75rem;
+  padding: 0.3rem 1.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transform: rotate(-45deg);
+  transform-origin: bottom;
+  z-index: 1;
+  border-radius: 0 0.5rem 0.5rem 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* column */
+.custom-5-cols {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.custom-col {
+  flex: 0 0 calc(20% - 1rem);
+  max-width: calc(20% - 1rem);
+  min-width: 200px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.custom-col:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+/* Image */
+.card-img-top {
+  height: 100px;
+  object-fit: contain;
+  border-radius: 8px;
+}
